@@ -30,6 +30,14 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
 .job-row{display:flex;align-items:center;gap:9px;margin:0 0 10px;padding:9px 11px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px}.job-row label{font-size:11px;font-weight:800;color:var(--text);white-space:nowrap}.job-row input{flex:1;min-width:0;height:36px;border:1px solid var(--line);border-radius:7px;background:var(--control);color:var(--text);font:600 13px Arial,Helvetica,sans-serif;padding:7px 10px;outline:none}.job-row input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(217,119,6,.15)}.job-row .hint{font-size:10px;color:var(--muted);white-space:nowrap}.val{cursor:pointer}.val.dim-active{z-index:5!important;border-color:var(--orange)!important;background:#fff7ed!important;color:#7c2d12!important;box-shadow:0 0 0 3px rgba(217,119,6,.25),0 3px 12px rgba(217,119,6,.24)}html[data-theme="dark"] .val.dim-active{background:#3a2612!important;color:#ffd9a8!important}@media(prefers-color-scheme:dark){html:not([data-theme="light"]) .val.dim-active{background:#3a2612!important;color:#ffd9a8!important}}.dim-status{position:absolute;right:18px;top:18px;z-index:6;display:none;max-width:250px;padding:6px 9px;border-radius:7px;background:rgba(11,31,58,.92);color:#fff;font:700 11px Arial,Helvetica,sans-serif;box-shadow:0 4px 12px rgba(0,0,0,.18);pointer-events:none}.dim-status.show{display:block}.offline-badge{display:inline-flex;align-items:center;gap:5px}.offline-dot{width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block}.offline-badge.offline .offline-dot{background:var(--orange)}.pdf-exporting .job-row{width:935px!important;margin:0 auto 7px!important;background:#fff!important;border-color:#d6dde7!important;color:#111827!important}.pdf-exporting .job-row label,.pdf-exporting .job-row input{color:#111827!important}.pdf-exporting .job-row input{background:#fff!important;border-color:#9aa3b0!important}.pdf-exporting .job-row .hint{display:none!important}.pdf-exporting .dim-status{display:none!important}
 @media(max-width:700px){.job-row{align-items:stretch;flex-direction:column;gap:6px}.job-row label{white-space:normal}.job-row input{width:100%;font-size:16px}.job-row .hint{white-space:normal}.dim-status{right:8px;top:8px;max-width:190px;font-size:10px}}
 @media print{@page{size:landscape;margin:4mm}html{overflow:visible!important}body{overflow:visible!important;page-break-after:avoid!important}html,body{background:#fff!important;color:#000!important;width:100%!important;height:auto!important}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.site-header{border:0!important;background:#fff!important}.header-inner{width:203mm!important;max-width:none!important;padding:0!important;margin:0 auto 1mm!important}.brand-logo-wrap{width:8mm!important;height:8mm!important;border:0!important}.brand-logo{width:7.5mm!important;height:7.5mm!important}.brand-name{font-size:8pt!important;color:#0B1F3A!important}.brand-sub{display:none!important}.header-actions{display:none!important}.page{max-width:none!important;width:100%!important;padding:0!important;margin:0!important}.main{width:100%!important}.title-row{width:203mm!important;margin:0 auto 1mm!important;display:flex!important;align-items:end!important;flex-direction:row!important}.title-accent{display:none!important}h1{font-size:10.5pt!important;color:#0B1F3A!important}.selection-note{font-size:7.5pt!important;color:#444!important}.tool-card{width:203mm!important;margin:0 auto!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important;background:#fff!important;break-inside:avoid;page-break-inside:avoid}.canvas-shell{width:203mm!important;height:177.8mm!important;overflow:hidden!important;margin:0 auto!important}.canvas{transform:scale(.82)!important;transform-origin:top left!important;background:#fff!important}.canvas img{filter:contrast(1.10)!important}select,.ro,.val{background:#fff!important;color:#111!important;border-color:#738091!important}.ro{color:#c93d31!important}.val{font-size:12px!important}.info-row{display:none!important}.job-row{display:none!important}footer{width:203mm!important;max-width:none!important;margin:1mm auto 0!important;font-size:6.5pt!important;line-height:1.15!important;color:#555!important}}
+
+.supp-strip{display:flex;flex-wrap:wrap;gap:8px 28px;padding:9px 18px 9px;background:var(--surface-2);border-top:1px solid var(--line);font-size:12px;border-radius:0 0 10px 10px}
+.supp-item{display:flex;align-items:center;gap:7px}
+.supp-lbl{color:var(--muted);font-size:11px;white-space:nowrap;font-weight:500}
+.supp-val{font-size:12px;font-family:inherit;color:var(--text);cursor:pointer;padding:1px 5px;border-radius:3px;border:1px solid transparent;background:transparent}
+.supp-val:hover,.supp-val:focus{background:var(--control);border-color:var(--line);outline:none}
+.supp-val.dim-active{background:rgba(217,119,6,.12);border-color:var(--orange)}
+@media print{.supp-strip{display:flex!important;padding:1mm 0!important;font-size:7pt!important;border:0!important;background:#fff!important}}
 </style>
 </head>
 <body>
@@ -41,7 +49,8 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
     </div>
     <div class="header-actions">
       <button class="action-btn" id="resetTool" type="button" title="Reset flange selections">↺ <span class="long">Reset</span></button>
-      <button class="action-btn primary" id="savePdf" type="button" title="Download the current flange selection as a one-page landscape PDF">⇩ <span class="long">Download PDF</span></button>
+      <button class="action-btn primary" id="savePdf" type="button" title="Download the current flange selection as a one-page landscape PDF (PDF engine requires internet on first use)">⇩ <span class="long">Download PDF</span></button>
+      <button class="action-btn" id="unitToggle" type="button" title="Toggle inch / metric (mm) display">in</button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme" title="Toggle light/dark theme">◐ Theme</button>
     </div>
   </div>
@@ -91,13 +100,16 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
     <div class="val" style="left:408px; top:779px; width:102px; height:18px;" id="v_bc"></div>
         </div>
       </div>
+    <div class="supp-strip">
+      <span class="supp-item"><span class="supp-lbl">Bolt hole dia.</span><span class="val supp-val" id="v_bolthole" tabindex="0" role="button" aria-label="Bolt hole diameter">–</span></span>
+    </div>
     </div>
 
   <div class="info-row">
     <div class="info-card"><strong>About this tool.</strong> Select the flange size and pressure rating directly on the drawing. All dimensions are shown in inches. Use Download PDF to save the current configuration directly as a one-page landscape PDF.</div>
     <div class="info-card"><strong>Engineering disclaimer.</strong> Quick-reference aid only. Verify dimensions, pressure rating, material requirements, manufacturer documentation, project specifications, and the applicable controlled API requirements before engineering, manufacturing, inspection, or recertification use.</div>
   </div>
-  <footer><span>Tool v1.2 · Data revision: 2026-08</span> <span class="footer-sep">|</span> <span class="offline-badge" id="offlineBadge"><span class="offline-dot"></span><span id="offlineText">Standalone</span></span> <span class="footer-sep">|</span> <span>© <span id="copyrightYear"></span> Anjan Patel · All rights reserved.</span> <span class="footer-sep">|</span> <a href="https://www.linkedin.com/in/anjanspatel/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:anjan@anjanpatel.ca">Contact</a><span class="pdf-only"> · Generated <span id="pdfGeneratedDate"></span></span></footer>
+  <footer><span>Tool v1.3 · Data rev. 2026-08 · <abbr title="10 K and 15 K entries and sizes 13 5/8 and 16 3/4 are estimates — verify against API Spec 6A before engineering use">⚠ new data: verify 10K/15K</abbr></span> <span class="footer-sep">|</span> <span class="offline-badge" id="offlineBadge"><span class="offline-dot"></span><span id="offlineText">Standalone</span></span> <span class="footer-sep">|</span> <span>© <span id="copyrightYear"></span> Anjan Patel · All rights reserved.</span> <span class="footer-sep">|</span> <a href="https://www.linkedin.com/in/anjanspatel/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:anjan@anjanpatel.ca">Contact</a><span class="pdf-only"> · Generated <span id="pdfGeneratedDate"></span></span></footer>
   </div>
 </div>
 
@@ -125,9 +137,9 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
  const offlineBadge=document.getElementById('offlineBadge'),offlineText=document.getElementById('offlineText');
  function updateOnlineState(){const off=!navigator.onLine;if(offlineBadge)offlineBadge.classList.toggle('offline',off);if(offlineText)offlineText.textContent=off?'Offline — page already open':'Standalone'}
  window.addEventListener('online',updateOnlineState);window.addEventListener('offline',updateOnlineState);updateOnlineState();
- const dimNames={v_od:'Outside diameter',v_rf:'Raised-face diameter',v_god:'Ring groove outside diameter',v_gpd:'Ring groove pitch diameter',v_gid:'Ring groove inside diameter',v_gw:'Ring groove width',v_gd:'Ring groove depth',v_max:'Chamfer / maximum',v_bore:'Bore diameter',v_hub:'Hub diameter',v_min:'Minimum hub dimension',v_radius:'Radius',v_studlen:'Stud length',v_holes:'Number of bolt holes',v_studdia:'Stud diameter',v_bc:'Bolt circle diameter'};
+ const dimNames={v_od:'Outside diameter',v_rf:'Raised-face diameter',v_god:'Ring groove outside diameter',v_gpd:'Ring groove pitch diameter',v_gid:'Ring groove inside diameter',v_gw:'Ring groove width',v_gd:'Ring groove depth',v_max:'Chamfer / maximum',v_bore:'Bore diameter',v_hub:'Hub diameter',v_min:'Minimum hub dimension',v_radius:'Radius',v_studlen:'Stud length',v_holes:'Number of bolt holes',v_studdia:'Stud diameter',v_bc:'Bolt circle diameter',v_bolthole:'Bolt hole diameter'};
  const dimStatus=document.getElementById('dimStatus');
- document.querySelectorAll('.val').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(dimNames[el.id]||'Dimension')+': '+el.textContent);const activate=()=>{document.querySelectorAll('.val.dim-active').forEach(x=>{if(x!==el)x.classList.remove('dim-active')});el.classList.toggle('dim-active');if(dimStatus){if(el.classList.contains('dim-active')){dimStatus.textContent=(dimNames[el.id]||'Dimension')+' — '+el.textContent;dimStatus.classList.add('show')}else{dimStatus.classList.remove('show');dimStatus.textContent=''}}};el.addEventListener('click',activate);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}})});
+ document.querySelectorAll('.val').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(dimNames[el.id]||'Dimension')+': '+el.textContent);const activate=()=>{document.querySelectorAll('.val.dim-active').forEach(x=>{if(x!==el)x.classList.remove('dim-active')});el.classList.toggle('dim-active');if(dimStatus){if(el.classList.contains('dim-active')){const lbl=(dimNames[el.id]||'Dimension')+' — '+el.textContent;dimStatus.textContent=lbl;dimStatus.classList.add('show');if(navigator.clipboard){const raw=el.textContent.replace(/"$/,'').replace(/ mm$/,'').trim();const dm=raw.match(/\(([^)]+)\)/);navigator.clipboard.writeText(dm?dm[1]:raw).catch(()=>{});dimStatus.textContent='Copied — '+lbl;setTimeout(()=>{if(dimStatus.classList.contains('show'))dimStatus.textContent=lbl},1500)}}else{dimStatus.classList.remove('show');dimStatus.textContent=''}}};el.addEventListener('click',activate);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}})});
 })();
 
 
@@ -155,65 +167,121 @@ function toFracDec(dec){
   if (dec === undefined) return '–';
   return toFrac(dec) + ' (' + dec.toFixed(3) + ')';
 }
+function toMM(dec){
+  if (dec === undefined) return '–';
+  return (dec * 25.4).toFixed(1);
+}
 
-const sizes = ["2 1/16","2 9/16","3 1/8","4 1/16","5 1/8","7 1/16","9","11"];
+let metricMode = false;
+function dispVal(dec){ return metricMode ? toMM(dec) : toFracDec(dec); }
+function unitSuffix(){ return metricMode ? ' mm' : '"'; }
 
+function set(id, val){ const el=document.getElementById(id); if(el) el.textContent=val; }
+function setIn(id, val){ const el=document.getElementById(id); if(el) el.textContent=val+unitSuffix(); }
+
+const sizes = ["2 1/16","2 9/16","3 1/8","4 1/16","5 1/8","7 1/16","9","11","13 5/8","16 3/4"];
+
+// ⚠ DATA NOTICE — 10,000 psi and 15,000 psi entries, and sizes 13 5/8" and 16 3/4",
+// are working estimates. Verify ALL dimensions against API Spec 6A / ISO 10423,
+// Table 6 (flanges) and Table 9 (ring grooves), before any engineering use.
 const data = {
   "2 1/16": {
-    "3000": {bore:2.09, od:8.5, rf:4.88, hub:4.12, bc:6.5, n:8, boltDia:0.875, boltHole:1.0, studLen:6.0, chamfer:0.12, hubMin:4.31, ring:24},
-    "5000": {bore:2.09, od:8.5, rf:4.88, hub:4.12, bc:6.5, n:8, boltDia:0.875, boltHole:1.0, studLen:6.0, chamfer:0.12, hubMin:4.31, ring:24}
+    "3000":  {bore:2.09, od:8.50,  rf:4.88, hub:4.12, bc:6.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:24},
+    "5000":  {bore:2.09, od:8.50,  rf:4.88, hub:4.12, bc:6.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:24},
+    "10000": {bore:2.09, od:11.00, rf:6.75, hub:6.00, bc:8.75,  n:8,  boltDia:1.250, boltHole:1.375, studLen:8.50,  chamfer:0.12, hubMin:5.44, ring:"BX-150"},
+    "15000": {bore:2.09, od:12.44, rf:7.81, hub:7.06, bc:9.75,  n:8,  boltDia:1.500, boltHole:1.625, studLen:10.25, chamfer:0.12, hubMin:6.31, ring:"BX-150"}
   },
   "2 9/16": {
-    "3000": {bore:2.59, od:9.62, rf:5.38, hub:4.88, bc:7.5, n:8, boltDia:1.0, boltHole:1.12, studLen:6.5, chamfer:0.12, hubMin:4.44, ring:27},
-    "5000": {bore:2.59, od:9.62, rf:5.38, hub:4.88, bc:7.5, n:8, boltDia:1.0, boltHole:1.12, studLen:6.5, chamfer:0.12, hubMin:4.44, ring:27}
+    "3000":  {bore:2.59, od:9.62,  rf:5.38, hub:4.88, bc:7.50,  n:8,  boltDia:1.000, boltHole:1.125, studLen:6.50,  chamfer:0.12, hubMin:4.44, ring:27},
+    "5000":  {bore:2.59, od:9.62,  rf:5.38, hub:4.88, bc:7.50,  n:8,  boltDia:1.000, boltHole:1.125, studLen:6.50,  chamfer:0.12, hubMin:4.44, ring:27},
+    "10000": {bore:2.59, od:12.25, rf:7.75, hub:7.25, bc:10.00, n:8,  boltDia:1.500, boltHole:1.625, studLen:10.25, chamfer:0.12, hubMin:6.44, ring:"BX-151"},
+    "15000": {bore:2.59, od:13.25, rf:8.44, hub:8.12, bc:10.75, n:8,  boltDia:1.625, boltHole:1.750, studLen:11.00, chamfer:0.12, hubMin:7.13, ring:"BX-151"}
   },
   "3 1/8": {
-    "3000": {bore:3.22, od:9.5,  rf:6.12, hub:5.0,  bc:7.5,  n:8,  boltDia:0.875, boltHole:1.0,  studLen:6.0,  chamfer:0.12, hubMin:4.31, ring:31},
-    "5000": {bore:3.22, od:10.5, rf:6.62, hub:5.25, bc:8.0,  n:8,  boltDia:1.125, boltHole:1.25, studLen:7.25, chamfer:0.12, hubMin:4.94, ring:35}
+    "3000":  {bore:3.22, od:9.50,  rf:6.12, hub:5.00, bc:7.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:31},
+    "5000":  {bore:3.22, od:10.50, rf:6.62, hub:5.25, bc:8.00,  n:8,  boltDia:1.125, boltHole:1.250, studLen:7.25,  chamfer:0.12, hubMin:4.94, ring:35},
+    "10000": {bore:3.22, od:14.50, rf:8.50, hub:8.50, bc:11.50, n:8,  boltDia:1.625, boltHole:1.750, studLen:11.50, chamfer:0.12, hubMin:7.38, ring:"BX-152"},
+    "15000": {bore:3.22, od:15.75, rf:9.75, hub:9.75, bc:12.75, n:8,  boltDia:1.875, boltHole:2.000, studLen:13.25, chamfer:0.12, hubMin:8.63, ring:"BX-152"}
   },
   "4 1/16": {
-    "3000": {bore:4.28, od:11.5,  rf:7.12, hub:6.25, bc:9.25, n:8,  boltDia:1.125, boltHole:1.25, studLen:7.0, chamfer:0.12, hubMin:4.81, ring:37},
-    "5000": {bore:4.28, od:12.25, rf:7.62, hub:6.38, bc:9.5,  n:8,  boltDia:1.25,  boltHole:1.38, studLen:8.0, chamfer:0.12, hubMin:5.19, ring:39}
+    "3000":  {bore:4.28, od:11.50, rf:7.12, hub:6.25, bc:9.25,  n:8,  boltDia:1.125, boltHole:1.250, studLen:7.00,  chamfer:0.12, hubMin:4.81, ring:37},
+    "5000":  {bore:4.28, od:12.25, rf:7.62, hub:6.38, bc:9.50,  n:8,  boltDia:1.250, boltHole:1.375, studLen:8.00,  chamfer:0.12, hubMin:5.19, ring:39},
+    "10000": {bore:4.28, od:16.00, rf:10.00,hub:9.75, bc:13.00, n:12, boltDia:1.500, boltHole:1.625, studLen:11.00, chamfer:0.12, hubMin:8.50, ring:"BX-153"},
+    "15000": {bore:4.28, od:18.75, rf:11.50,hub:11.25,bc:15.00, n:8,  boltDia:2.000, boltHole:2.125, studLen:14.50, chamfer:0.12, hubMin:10.00,ring:"BX-153"}
   },
   "5 1/8": {
-    "3000": {bore:5.16, od:13.75, rf:8.5,  hub:7.5,  bc:11.0,  n:8,  boltDia:1.25, boltHole:1.38, studLen:7.75, chamfer:0.12, hubMin:5.31, ring:41},
-    "5000": {bore:5.16, od:14.75, rf:9.0,  hub:7.75, bc:11.5,  n:8,  boltDia:1.5,  boltHole:1.62, studLen:10.0, chamfer:0.12, hubMin:6.44, ring:44}
+    "3000":  {bore:5.16, od:13.75, rf:8.50, hub:7.50, bc:11.00, n:8,  boltDia:1.250, boltHole:1.375, studLen:7.75,  chamfer:0.12, hubMin:5.31, ring:41},
+    "5000":  {bore:5.16, od:14.75, rf:9.00, hub:7.75, bc:11.50, n:8,  boltDia:1.500, boltHole:1.625, studLen:10.00, chamfer:0.12, hubMin:6.44, ring:44},
+    "10000": {bore:5.16, od:20.00, rf:12.50,hub:12.00,bc:16.50, n:12, boltDia:1.875, boltHole:2.000, studLen:14.25, chamfer:0.12, hubMin:9.94, ring:"BX-154"},
+    "15000": {bore:5.16, od:22.44, rf:14.19,hub:14.00,bc:18.50, n:8,  boltDia:2.250, boltHole:2.375, studLen:17.00, chamfer:0.12, hubMin:11.94,ring:"BX-154"}
   },
   "7 1/16": {
-    "3000": {bore:7.16, od:15.0,  rf:9.5,   hub:9.25, bc:12.5, n:12, boltDia:1.125, boltHole:1.25, studLen:8.0,  chamfer:0.25, hubMin:5.81, ring:45},
-    "5000": {bore:7.16, od:15.5,  rf:9.75,  hub:9.0,  bc:12.5, n:12, boltDia:1.375, boltHole:1.5,  studLen:10.75, chamfer:0.25, hubMin:7.13, ring:46}
+    "3000":  {bore:7.16, od:15.00, rf:9.50, hub:9.25, bc:12.50, n:12, boltDia:1.125, boltHole:1.250, studLen:8.00,  chamfer:0.25, hubMin:5.81, ring:45},
+    "5000":  {bore:7.16, od:15.50, rf:9.75, hub:9.00, bc:12.50, n:12, boltDia:1.375, boltHole:1.500, studLen:10.75, chamfer:0.25, hubMin:7.13, ring:46},
+    "10000": {bore:7.16, od:22.00, rf:15.00,hub:14.00,bc:18.50, n:12, boltDia:2.000, boltHole:2.125, studLen:16.00, chamfer:0.25, hubMin:12.06,ring:"BX-155"},
+    "15000": {bore:7.16, od:25.81, rf:17.00,hub:17.12,bc:21.50, n:12, boltDia:2.375, boltHole:2.500, studLen:19.25, chamfer:0.25, hubMin:14.00,ring:"BX-155"}
   },
   "9": {
-    "3000": {bore:9.03, od:18.5, rf:12.12, hub:11.75, bc:15.5, n:12, boltDia:1.375, boltHole:1.5,  studLen:9.0,  chamfer:0.25, hubMin:6.69, ring:49},
-    "5000": {bore:9.03, od:19.0, rf:12.5,  hub:11.5,  bc:15.5, n:12, boltDia:1.625, boltHole:1.75, studLen:12.0, chamfer:0.25, hubMin:8.81, ring:50}
+    "3000":  {bore:9.03, od:18.50, rf:12.12,hub:11.75,bc:15.50, n:12, boltDia:1.375, boltHole:1.500, studLen:9.00,  chamfer:0.25, hubMin:6.69, ring:49},
+    "5000":  {bore:9.03, od:19.00, rf:12.50,hub:11.50,bc:15.50, n:12, boltDia:1.625, boltHole:1.750, studLen:12.00, chamfer:0.25, hubMin:8.81, ring:50},
+    "10000": {bore:9.03, od:26.00, rf:18.00,hub:17.00,bc:22.00, n:16, boltDia:2.000, boltHole:2.125, studLen:17.00, chamfer:0.25, hubMin:13.56,ring:"BX-156"},
+    "15000": {bore:9.03, od:32.69, rf:22.31,hub:21.62,bc:27.50, n:12, boltDia:3.000, boltHole:3.125, studLen:25.00, chamfer:0.25, hubMin:18.69,ring:"BX-156"}
   },
   "11": {
-    "3000": {bore:11.03, od:21.5, rf:14.25, hub:14.5, bc:18.5, n:16, boltDia:1.375, boltHole:1.5,  studLen:9.5,  chamfer:0.25, hubMin:7.56, ring:53},
-    "5000": {bore:11.03, od:23.0, rf:14.63, hub:14.5, bc:19.0, n:12, boltDia:1.875, boltHole:2.0,  studLen:13.75, chamfer:0.25, hubMin:10.44, ring:54}
+    "3000":  {bore:11.03,od:21.50, rf:14.25,hub:14.50,bc:18.50, n:16, boltDia:1.375, boltHole:1.500, studLen:9.50,  chamfer:0.25, hubMin:7.56, ring:53},
+    "5000":  {bore:11.03,od:23.00, rf:14.63,hub:14.50,bc:19.00, n:12, boltDia:1.875, boltHole:2.000, studLen:13.75, chamfer:0.25, hubMin:10.44,ring:54},
+    "10000": {bore:11.03,od:30.00, rf:21.00,hub:20.00,bc:25.25, n:16, boltDia:2.375, boltHole:2.500, studLen:20.00, chamfer:0.25, hubMin:16.13,ring:"BX-157"},
+    "15000": {bore:11.03,od:38.75, rf:26.00,hub:26.50,bc:32.25, n:12, boltDia:3.500, boltHole:3.625, studLen:29.75, chamfer:0.25, hubMin:22.25,ring:"BX-157"}
+  },
+  // ⚠ 13 5/8" and 16 3/4" — verify ring numbers and all dimensions vs. API Spec 6A Table 6
+  "13 5/8": {
+    "3000":  {bore:13.63,od:26.75, rf:20.75,hub:18.75,bc:23.50, n:16, boltDia:1.625, boltHole:1.750, studLen:10.50, chamfer:0.25, hubMin:8.00, ring:57},
+    "5000":  {bore:13.63,od:27.75, rf:21.25,hub:19.25,bc:23.75, n:16, boltDia:1.875, boltHole:2.000, studLen:13.50, chamfer:0.25, hubMin:10.50,ring:58}
+  },
+  "16 3/4": {
+    "3000":  {bore:16.88,od:31.50, rf:25.00,hub:23.25,bc:27.75, n:16, boltDia:2.000, boltHole:2.125, studLen:12.00, chamfer:0.25, hubMin:9.00, ring:65},
+    "5000":  {bore:16.88,od:34.75, rf:26.00,hub:24.00,bc:29.50, n:16, boltDia:2.375, boltHole:2.500, studLen:15.75, chamfer:0.25, hubMin:12.50,ring:66}
   }
 };
 
 const ring = {
-  24:{pd:3.750, w:0.438, d:0.312},
-  27:{pd:4.250, w:0.438, d:0.312},
-  31:{pd:4.844, w:0.438, d:0.312},
-  35:{pd:5.375, w:0.469, d:0.344},
-  37:{pd:5.875, w:0.469, d:0.344},
-  39:{pd:6.375, w:0.500, d:0.375},
-  41:{pd:7.125, w:0.500, d:0.375},
-  44:{pd:7.625, w:0.531, d:0.406},
-  45:{pd:8.313, w:0.531, d:0.406},
-  46:{pd:8.313, w:0.562, d:0.422},
-  49:{pd:10.625,w:0.594, d:0.453},
-  50:{pd:10.625,w:0.625, d:0.469},
-  53:{pd:12.750,w:0.656, d:0.500},
-  54:{pd:12.750,w:0.688, d:0.531}
+  // R-type rings (API 6B flanges, 2 000 – 5 000 psi)
+  24:{pd:3.750,  w:0.438, d:0.312},
+  27:{pd:4.250,  w:0.438, d:0.312},
+  31:{pd:4.844,  w:0.438, d:0.312},
+  35:{pd:5.375,  w:0.469, d:0.344},
+  37:{pd:5.875,  w:0.469, d:0.344},
+  39:{pd:6.375,  w:0.500, d:0.375},
+  41:{pd:7.125,  w:0.500, d:0.375},
+  44:{pd:7.625,  w:0.531, d:0.406},
+  45:{pd:8.313,  w:0.531, d:0.406},
+  46:{pd:8.313,  w:0.562, d:0.422},
+  49:{pd:10.625, w:0.594, d:0.453},
+  50:{pd:10.625, w:0.625, d:0.469},
+  53:{pd:12.750, w:0.656, d:0.500},
+  54:{pd:12.750, w:0.688, d:0.531},
+  // ⚠ R-57/58/65/66 — verify pitch diameters and groove dims vs. API Spec 6A Table 9
+  57:{pd:15.188, w:0.719, d:0.547},
+  58:{pd:15.188, w:0.750, d:0.562},
+  65:{pd:18.500, w:0.813, d:0.625},
+  66:{pd:18.500, w:0.844, d:0.641},
+  // BX-type rings (API 6BX flanges, 10 000 and 15 000 psi)
+  // ⚠ BX groove dims are estimates — verify groove half-width (w) and depth (d) vs. API Spec 6A Table 9
+  "BX-150":{pd:3.594,  w:0.469, d:0.406},
+  "BX-151":{pd:4.094,  w:0.469, d:0.406},
+  "BX-152":{pd:5.000,  w:0.500, d:0.438},
+  "BX-153":{pd:6.375,  w:0.531, d:0.469},
+  "BX-154":{pd:7.938,  w:0.594, d:0.531},
+  "BX-155":{pd:10.688, w:0.656, d:0.594},
+  "BX-156":{pd:13.063, w:0.719, d:0.656},
+  "BX-157":{pd:15.563, w:0.781, d:0.719}
 };
 
 const RADIUS = {
   "2 1/16": 0.125, "2 9/16": 0.125, "3 1/8": 0.125,
   "4 1/16": 0.1875, "5 1/8": 0.1875,
-  "7 1/16": 0.25, "9": 0.25, "11": 0.375
+  "7 1/16": 0.25, "9": 0.25, "11": 0.375,
+  "13 5/8": 0.375, "16 3/4": 0.500
 };
 
 const sizeSel = document.getElementById('size');
@@ -236,44 +304,58 @@ function refreshRatings(){
   });
 }
 
-function set(id, val){ document.getElementById(id).textContent = val; }
-function setIn(id, val){ document.getElementById(id).textContent = val + '"'; }
-
 function render(){
   const s = sizeSel.value;
   const r = ratingSel.value;
   const d = data[s][r];
   if (!d) return;
 
-  setIn('v_od', toFracDec(d.od));
-  setIn('v_rf', toFracDec(d.rf));
-  setIn('v_max', toFracDec(d.chamfer));
-  setIn('v_bore', toFracDec(d.bore));
-  setIn('v_hub', toFracDec(d.hub));
-  setIn('v_min', toFracDec(d.hubMin));
-  setIn('v_radius', toFracDec(RADIUS[s]));
-  setIn('v_studlen', toFracDec(d.studLen));
-  setIn('v_studdia', toFracDec(d.boltDia));
-  setIn('v_bc', toFracDec(d.bc));
+  setIn('v_od', dispVal(d.od));
+  setIn('v_rf', dispVal(d.rf));
+  setIn('v_max', dispVal(d.chamfer));
+  setIn('v_bore', dispVal(d.bore));
+  setIn('v_hub', dispVal(d.hub));
+  setIn('v_min', dispVal(d.hubMin));
+  setIn('v_radius', dispVal(RADIUS[s]));
+  setIn('v_studlen', dispVal(d.studLen));
+  setIn('v_studdia', dispVal(d.boltDia));
+  setIn('v_bc', dispVal(d.bc));
+  setIn('v_bolthole', dispVal(d.boltHole));
   set('v_holes', d.n);
 
   const rg = ring[d.ring];
-  setIn('v_gpd', toFracDec(rg.pd));
-  setIn('v_god', toFracDec(rg.pd + rg.w));
-  setIn('v_gid', toFracDec(rg.pd - rg.w));
-  setIn('v_gw', toFracDec(rg.w));
-  setIn('v_gd', toFracDec(rg.d));
+  if(rg){
+    setIn('v_gpd', dispVal(rg.pd));
+    setIn('v_god', dispVal(rg.pd + rg.w));
+    setIn('v_gid', dispVal(rg.pd - rg.w));
+    setIn('v_gw', dispVal(rg.w));
+    setIn('v_gd', dispVal(rg.d));
+  }
 
-  document.getElementById('ringR').textContent = 'R-' + d.ring;
-  document.getElementById('ringRX').textContent = 'RX-' + d.ring;
+  const isBX = typeof d.ring === 'string';
+  const ringLabel = isBX ? d.ring : 'R-' + d.ring;
+  document.getElementById('ringR').textContent = isBX ? d.ring : 'R-' + d.ring;
+  document.getElementById('ringRX').textContent = isBX ? '—' : 'RX-' + d.ring;
   const note = document.getElementById('selectionNote');
-  if(note) note.textContent = s + '" | ' + Number(r).toLocaleString() + ' psi | R-' + d.ring;
-  const dimNames={v_od:'Outside diameter',v_rf:'Raised-face diameter',v_god:'Ring groove outside diameter',v_gpd:'Ring groove pitch diameter',v_gid:'Ring groove inside diameter',v_gw:'Ring groove width',v_gd:'Ring groove depth',v_max:'Chamfer / maximum',v_bore:'Bore diameter',v_hub:'Hub diameter',v_min:'Minimum hub dimension',v_radius:'Radius',v_studlen:'Stud length',v_holes:'Number of bolt holes',v_studdia:'Stud diameter',v_bc:'Bolt circle diameter'};
+  if(note) note.textContent = s + '" | ' + Number(r).toLocaleString() + ' psi | ' + ringLabel;
+  const dimNames={v_od:'Outside diameter',v_rf:'Raised-face diameter',v_god:'Ring groove outside diameter',v_gpd:'Ring groove pitch diameter',v_gid:'Ring groove inside diameter',v_gw:'Ring groove width',v_gd:'Ring groove depth',v_max:'Chamfer / maximum',v_bore:'Bore diameter',v_hub:'Hub diameter',v_min:'Minimum hub dimension',v_radius:'Radius',v_studlen:'Stud length',v_holes:'Number of bolt holes',v_studdia:'Stud diameter',v_bc:'Bolt circle diameter',v_bolthole:'Bolt hole diameter'};
   document.querySelectorAll('.val').forEach(el=>el.setAttribute('aria-label',(dimNames[el.id]||'Dimension')+': '+el.textContent));
 }
 
 sizeSel.addEventListener('change', () => { refreshRatings(); render(); });
 ratingSel.addEventListener('change', render);
+
+const unitBtn = document.getElementById('unitToggle');
+if(unitBtn){
+  unitBtn.addEventListener('click', () => {
+    metricMode = !metricMode;
+    unitBtn.textContent = metricMode ? 'mm' : 'in';
+    unitBtn.title = metricMode ? 'Switch to inches' : 'Switch to millimetres (mm)';
+    try{ localStorage.setItem('api6a-units', metricMode?'mm':'in'); }catch(e){}
+    render();
+  });
+  try{ if(localStorage.getItem('api6a-units')==='mm'){ metricMode=true; unitBtn.textContent='mm'; }}catch(e){}
+}
 
 refreshRatings();
 render();
