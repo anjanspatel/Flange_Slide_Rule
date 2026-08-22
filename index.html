@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Flange Slide Rule">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIxNiwyIDMwLDMwIDIsMzAiIGZpbGw9IiNEOTc3MDYiLz48L3N2Zz4=">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHBvbHlnb24gcG9pbnRzPSIxNiwxIDI5LDguNSAyOSwyMy41IDE2LDMxIDMsMjMuNSAzLDguNSIgZmlsbD0iIzBCMUYzQSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMiIgZmlsbD0iI0Q5NzcwNiI+NkE8L3RleHQ+Cjwvc3ZnPg==">
 <style>
 :root{color-scheme:light;--navy:#0B1F3A;--gunmetal:#3A3F45;--orange:#D97706;--bg:#f3f6f9;--surface:#fff;--surface-2:#f8fafc;--text:#152033;--muted:#667085;--line:#d6dde7;--control:#fff;--tool-bg:#fff;--tool-line:#8d99a8;--shadow:0 12px 34px rgba(11,31,58,.10);--button:#0B1F3A;--button-text:#fff}
 html[data-theme="dark"]{color-scheme:dark;--bg:#0b1119;--surface:#121a24;--surface-2:#17212d;--text:#edf3f8;--muted:#9cabb9;--line:#324151;--control:#1b2633;--tool-bg:#111821;--tool-line:#647487;--shadow:0 14px 40px rgba(0,0,0,.34);--button:#edf3f8;--button-text:#0B1F3A}
@@ -196,7 +196,7 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
  const root=document.documentElement,toggle=document.getElementById('themeToggle'),shell=document.getElementById('canvasShell'),canvas=document.getElementById('canvas'),resetBtn=document.getElementById('resetTool'),pdfBtn=document.getElementById('savePdf'),themeMeta=document.getElementById('themeColorMeta');
  const BASE_W=935,BASE_H=819;
  const logo=document.querySelector('.brand-logo');
- if(logo){const apple=document.createElement('link');apple.rel='apple-touch-icon';apple.href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIxNiwyIDMwLDMwIDIsMzAiIGZpbGw9IiNEOTc3MDYiLz48L3N2Zz4=';document.head.appendChild(apple)}
+ if(logo){const apple=document.createElement('link');apple.rel='apple-touch-icon';apple.href='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHBvbHlnb24gcG9pbnRzPSIxNiwxIDI5LDguNSAyOSwyMy41IDE2LDMxIDMsMjMuNSAzLDguNSIgZmlsbD0iIzBCMUYzQSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMS41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIxMiIgZmlsbD0iI0Q5NzcwNiI+NkE8L3RleHQ+Cjwvc3ZnPg==';document.head.appendChild(apple)}
  function systemDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches}
  function effectiveTheme(){return root.dataset.theme||(systemDark()?'dark':'light')}
  function updateToggle(){const dark=effectiveTheme()==='dark';toggle.textContent=dark?'☀ Light':'☾ Dark';toggle.setAttribute('aria-pressed',dark?'true':'false');toggle.title=dark?'Switch to light mode':'Switch to dark mode';if(themeMeta)themeMeta.content=dark?'#0b1119':'#0B1F3A'}
