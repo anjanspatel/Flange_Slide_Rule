@@ -199,7 +199,7 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
  function systemDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches}
  function effectiveTheme(){return root.dataset.theme||(systemDark()?'dark':'light')}
  function updateToggle(){const dark=effectiveTheme()==='dark';toggle.textContent=dark?'☀ Light':'☾ Dark';toggle.setAttribute('aria-pressed',dark?'true':'false');toggle.title=dark?'Switch to light mode':'Switch to dark mode';if(themeMeta)themeMeta.content=dark?'#0b1119':'#0B1F3A'}
- try{const saved=localStorage.getItem('api6a-theme');if(saved==='light'||saved==='dark')root.dataset.theme=saved}catch(e){}
+ try{const saved=localStorage.getItem('api6a-theme');root.dataset.theme=(saved==='dark')?'dark':'light'}catch(e){root.dataset.theme='light'}
  updateToggle();toggle.addEventListener('click',()=>{const next=effectiveTheme()==='dark'?'light':'dark';root.dataset.theme=next;try{localStorage.setItem('api6a-theme',next)}catch(e){}updateToggle()});
  if(window.matchMedia){const mq=window.matchMedia('(prefers-color-scheme: dark)');if(mq.addEventListener)mq.addEventListener('change',()=>{if(!root.dataset.theme)updateToggle()})}
  function fitCanvas(){const available=shell.clientWidth||BASE_W,scale=Math.min(1,available/BASE_W);if(!window.matchMedia('print').matches){canvas.style.transform='scale('+scale+')';shell.style.height=(BASE_H*scale)+'px'}}
