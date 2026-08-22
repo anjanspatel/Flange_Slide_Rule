@@ -10,6 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Flange Slide Rule">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBvbHlnb24gcG9pbnRzPSIxNiwzIDMxLDI5IDEsMjkiIGZpbGw9IiNEOTc3MDYiLz48L3N2Zz4=">
 <style>
 :root{color-scheme:light;--navy:#0B1F3A;--gunmetal:#3A3F45;--orange:#D97706;--bg:#f3f6f9;--surface:#fff;--surface-2:#f8fafc;--text:#152033;--muted:#667085;--line:#d6dde7;--control:#fff;--tool-bg:#fff;--tool-line:#8d99a8;--shadow:0 12px 34px rgba(11,31,58,.10);--button:#0B1F3A;--button-text:#fff}
 html[data-theme="dark"]{color-scheme:dark;--bg:#0b1119;--surface:#121a24;--surface-2:#17212d;--text:#edf3f8;--muted:#9cabb9;--line:#324151;--control:#1b2633;--tool-bg:#111821;--tool-line:#647487;--shadow:0 14px 40px rgba(0,0,0,.34);--button:#edf3f8;--button-text:#0B1F3A}
@@ -22,7 +23,18 @@ html[data-theme="dark"] .brand-logo-wrap{background:#fff;border-color:rgba(217,1
 .action-btn,.theme-toggle{appearance:none;border:1px solid var(--line);border-radius:8px;min-height:40px;padding:9px 12px;cursor:pointer;font:700 12.5px/1 Arial,Helvetica,sans-serif;transition:background .15s ease,border-color .15s ease,color .15s ease,transform .15s ease}.action-btn{background:var(--surface);color:var(--text)}.action-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}html[data-theme="dark"] .action-btn.primary{background:var(--orange);color:#111827;border-color:var(--orange)}@media(prefers-color-scheme:dark){html:not([data-theme="light"]) .action-btn.primary{background:var(--orange);color:#111827;border-color:var(--orange)}}.theme-toggle{background:var(--surface-2);color:var(--text)}.action-btn:focus-visible,.theme-toggle:focus-visible{outline:3px solid rgba(217,119,6,.35);outline-offset:2px}
 .page{width:100%;max-width:1040px;margin:0 auto;padding:18px 18px 38px}.main{width:100%;min-width:0}.title-row{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 0 12px}h1{font-size:clamp(18px,2.2vw,24px);letter-spacing:.025em;color:var(--text);margin:0;font-weight:800;line-height:1.15}.title-accent{width:64px;height:4px;background:var(--orange);border-radius:99px;margin-top:8px}.selection-note{font-size:11px;color:var(--muted);text-align:right;white-space:nowrap}.tool-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;box-shadow:var(--shadow);overflow:hidden;transition:background .22s ease,border-color .22s ease}.canvas-shell{position:relative;width:100%;overflow:hidden;margin:0 auto}.canvas{position:absolute;left:0;top:0;width:935px;height:819px;background:var(--tool-bg);transform-origin:top left;transition:background .22s ease}.canvas img{position:absolute;top:0;left:0;width:935px;height:819px;display:block;filter:contrast(1.13) brightness(1.01);transition:filter .22s ease}html[data-theme="dark"] .canvas img{filter:invert(1) hue-rotate(180deg) brightness(.91) contrast(1.13)}@media(prefers-color-scheme:dark){html:not([data-theme="light"]) .canvas img{filter:invert(1) hue-rotate(180deg) brightness(.91) contrast(1.13)}}
 select{position:absolute;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:800;border:1.75px solid var(--tool-line);background:var(--control);color:var(--text);padding:2px 4px;z-index:2;color-scheme:inherit}.ro{position:absolute;background:var(--control);font-weight:800;color:#d94838;font-size:16px;display:flex;align-items:center;justify-content:center;border:1.75px solid var(--tool-line);box-sizing:border-box;z-index:2}.val{position:absolute;display:flex;align-items:center;justify-content:center;background:var(--control);font-weight:800;color:var(--text);font-size:12px;line-height:1;border:1.75px solid var(--tool-line);box-sizing:border-box;padding:0 2px;white-space:nowrap;z-index:2;letter-spacing:-.015em;text-rendering:geometricPrecision}
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.info-card{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--muted);font-size:11px;line-height:1.45}.info-card strong{color:var(--text)}footer{max-width:935px;margin:13px auto 0;font-size:10.5px;line-height:1.45;color:var(--muted);text-align:center}
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.info-card{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--muted);font-size:11px;line-height:1.45}.info-card strong{color:var(--text)}footer{max-width:935px;margin:14px auto 0;font-size:10.5px;line-height:1.6;color:var(--muted);text-align:center}.footer-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px 10px;margin-bottom:5px;font-size:10px;opacity:.72;font-family:monospace}.footer-legal{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px 8px}.footer-dot{opacity:.35;user-select:none}.footer-link{background:none;border:none;color:inherit;cursor:pointer;font-size:inherit;padding:0;font-family:inherit;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .15s}.footer-link:hover{text-decoration-color:var(--muted)}.footer-warn{cursor:help;color:#D97706;text-decoration:underline dotted #D97706;text-underline-offset:2px;font-family:monospace;font-size:10px}
+/* Modals */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .18s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;max-width:500px;width:100%;max-height:78vh;overflow-y:auto;padding:28px 30px 24px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.28)}
+.modal-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;padding:4px 6px;border-radius:6px}
+.modal-close:hover{background:var(--surface-2)}
+.modal-box h2{font-size:14px;font-weight:700;color:var(--text);margin:0 0 14px;padding-right:28px}
+.modal-box h3{font-size:11px;font-weight:700;color:var(--text);margin:14px 0 3px;text-transform:uppercase;letter-spacing:.06em}
+.modal-box p,.modal-box li{font-size:11.5px;color:var(--muted);line-height:1.6;margin:0 0 6px}
+.modal-box ul{padding-left:16px;margin:0 0 6px}
+.modal-eff{font-size:10px;margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}
 
 select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-numeric:tabular-nums}.pdf-only{display:none}footer a{color:var(--text);font-weight:700;text-decoration:none}footer a:hover{text-decoration:underline}.pdf-exporting .pdf-only{display:inline}.pdf-exporting .header-actions{display:none!important}.pdf-exporting .brand-sub{display:none!important}.pdf-exporting .info-row{display:none!important}.pdf-exporting .site-header{box-shadow:none!important}.pdf-exporting .page{width:1040px!important;max-width:1040px!important;padding-top:10px!important}.pdf-exporting .header-inner{width:1040px!important;max-width:1040px!important}.pdf-exporting .title-row{margin-bottom:8px!important}.pdf-exporting .tool-card{box-shadow:none!important}.pdf-exporting .canvas-shell{width:748px!important;height:655px!important;margin:0 auto!important}.pdf-exporting .canvas{transform:scale(.8)!important;transform-origin:top left!important}.pdf-exporting footer{margin-top:8px!important;color:#4b5563!important}.pdf-exporting body,.pdf-exporting{background:#fff!important;color:#111827!important}
 @media(max-width:700px){.header-inner{padding:9px 10px;align-items:flex-start;flex-wrap:wrap}.brand-sub{display:none}.brand-logo-wrap{width:38px;height:38px}.brand-logo{width:35px;height:35px}.header-actions{width:100%;gap:7px;display:grid;grid-template-columns:1fr 1.35fr 1fr}.action-btn,.theme-toggle{width:100%;min-height:42px;padding:9px 8px;font-size:11px}.page{padding:12px 7px 24px}.title-row{align-items:flex-start;flex-direction:column;gap:5px}.selection-note{text-align:left;white-space:normal}.tool-card{padding:4px;border-radius:8px}.info-row{grid-template-columns:1fr}.val{font-size:11px}footer{padding:0 6px;font-size:9.5px}.footer-sep{display:none}}@media(max-width:430px){.brand-name{font-size:12px}.action-btn span.long{display:inline}.header-actions{grid-template-columns:1fr 1.35fr}.theme-toggle{grid-column:1 / -1}.action-btn,.theme-toggle{padding:8px 6px}}
@@ -109,7 +121,74 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
     <div class="info-card"><strong>About this tool.</strong> Select the flange size and pressure rating directly on the drawing. All dimensions are shown in inches. Use Download PDF to save the current configuration directly as a one-page landscape PDF.</div>
     <div class="info-card"><strong>Engineering disclaimer.</strong> Quick-reference aid only. Verify dimensions, pressure rating, material requirements, manufacturer documentation, project specifications, and the applicable controlled API requirements before engineering, manufacturing, inspection, or recertification use.</div>
   </div>
-  <footer><span>Tool v1.3 · Data rev. 2026-08 · <abbr title="10 K and 15 K entries and sizes 13 5/8 and 16 3/4 are estimates — verify against API Spec 6A before engineering use">⚠ new data: verify 10K/15K</abbr></span> <span class="footer-sep">|</span> <span class="offline-badge" id="offlineBadge"><span class="offline-dot"></span><span id="offlineText">Standalone</span></span> <span class="footer-sep">|</span> <span>© <span id="copyrightYear"></span> Anjan Patel · All rights reserved.</span> <span class="footer-sep">|</span> <a href="https://www.linkedin.com/in/anjanspatel/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:anjan@anjanpatel.ca">Contact</a><span class="pdf-only"> · Generated <span id="pdfGeneratedDate"></span></span></footer>
+  <footer>
+    <div class="footer-meta">
+      <span>v1.3 · Data rev. 2026-08</span>
+      <span class="footer-dot">·</span>
+      <abbr class="footer-warn" title="10K/15K entries and sizes 13 5/8 and 16 3/4 are estimates — verify against API Spec 6A Table 6 and Table 9 before engineering use">⚠ verify 10K/15K data</abbr>
+      <span class="footer-dot">·</span>
+      <span class="offline-badge" id="offlineBadge"><span class="offline-dot"></span><span id="offlineText">Standalone</span></span>
+    </div>
+    <div class="footer-legal">
+      <span>© <span id="copyrightYear"></span> Anjan Patel. All rights reserved.</span>
+      <span class="footer-dot">·</span>
+      <a class="footer-link" href="https://www.linkedin.com/in/anjanspatel/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <span class="footer-dot">·</span>
+      <a class="footer-link" href="mailto:anjan@anjanpatel.ca">Contact</a>
+      <span class="footer-dot">·</span>
+      <button class="footer-link" onclick="document.getElementById('termsModal').classList.add('open')">Terms of Use</button>
+      <span class="footer-dot">·</span>
+      <button class="footer-link" onclick="document.getElementById('privacyModal').classList.add('open')">Privacy Policy</button>
+    </div>
+    <span class="pdf-only"> · Generated <span id="pdfGeneratedDate"></span></span>
+  </footer>
+  </div>
+</div>
+
+<!-- Terms of Use Modal -->
+<div class="modal-overlay" id="termsModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <button class="modal-close" onclick="document.getElementById('termsModal').classList.remove('open')" aria-label="Close">×</button>
+    <h2 id="termsTitle">Terms of Use</h2>
+    <h3>Acceptance</h3>
+    <p>By accessing or using this tool you agree to these Terms. If you do not agree, do not use the tool.</p>
+    <h3>Purpose &amp; Scope</h3>
+    <p>This tool is a quick-reference aid for API 6A / ISO 10423 flange dimensional data. It is intended for preliminary reference only and is not a substitute for the controlled, current edition of API Specification 6A, manufacturer documentation, or project-specific engineering specifications.</p>
+    <h3>No Warranty</h3>
+    <p>This tool and all data within it are provided <strong>"as is"</strong> without warranty of any kind, express or implied, including but not limited to accuracy, completeness, fitness for a particular purpose, or non-infringement. Anjan Patel makes no representations regarding the correctness of dimensions, ratings, or material data contained herein.</p>
+    <h3>Engineering Disclaimer</h3>
+    <p>Dimensions, pressure ratings, ring gasket designations, bolt data, and all other values must be independently verified against the applicable controlled API Specification 6A edition, relevant codes, regulatory requirements, and manufacturer documentation before use in engineering, design, fabrication, inspection, procurement, or recertification activities.</p>
+    <p>Data for 10,000 psi and 15,000 psi ratings, and for nominal sizes 13 5/8" and 16 3/4", are estimates and have not been independently verified. Do not use for engineering purposes without verification.</p>
+    <h3>Limitation of Liability</h3>
+    <p>To the maximum extent permitted by applicable law, Anjan Patel shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of this tool or reliance on any data it provides.</p>
+    <h3>Intellectual Property</h3>
+    <p>All content, code, design, and layout of this tool are the exclusive property of Anjan Patel and are protected by copyright law. You may use the tool for personal, non-commercial reference. You may not reproduce, distribute, modify, or create derivative works without prior written permission.</p>
+    <h3>Changes</h3>
+    <p>These Terms may be updated at any time. Continued use of the tool after changes constitutes acceptance of the revised Terms.</p>
+    <p class="modal-eff">Effective date: August 2026 · © <span id="termsYear"></span> Anjan Patel. All rights reserved.</p>
+  </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="privacyModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <button class="modal-close" onclick="document.getElementById('privacyModal').classList.remove('open')" aria-label="Close">×</button>
+    <h2 id="privacyTitle">Privacy Policy</h2>
+    <h3>No Data Collection</h3>
+    <p>This tool does not collect, transmit, store, or share any personal information. No data you enter or view is sent to any server.</p>
+    <h3>Local Storage Only</h3>
+    <p>The tool uses your browser's <code>localStorage</code> solely to remember your display preferences (colour theme and unit system). This data never leaves your device and can be cleared at any time by clearing your browser's site data.</p>
+    <h3>No Cookies</h3>
+    <p>This tool sets no cookies of any kind.</p>
+    <h3>No Analytics or Tracking</h3>
+    <p>No analytics, telemetry, tracking pixels, or third-party scripts are embedded in this tool. Your use of the tool is entirely private.</p>
+    <h3>Standalone Operation</h3>
+    <p>The tool is designed to run entirely within your browser. Once loaded, it functions without an internet connection (standalone mode). No outbound network requests are made during normal use.</p>
+    <h3>Third-Party Links</h3>
+    <p>The footer contains links to LinkedIn and a contact email address. Following these links takes you to third-party services governed by their own privacy policies. Anjan Patel is not responsible for the privacy practices of those services.</p>
+    <h3>Contact</h3>
+    <p>For any privacy-related questions, contact <a class="footer-link" href="mailto:anjan@anjanpatel.ca">anjan@anjanpatel.ca</a>.</p>
+    <p class="modal-eff">Effective date: August 2026 · © <span id="privacyYear"></span> Anjan Patel. All rights reserved.</p>
   </div>
 </div>
 
@@ -133,7 +212,8 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
  function pdfFileName(){const size=document.getElementById('size')?.value||'flange',rating=document.getElementById('rating')?.value||'',job=document.getElementById('jobNote')?.value.trim()||'';const cleanSize=size.replace(/"/g,'').replace(/\s+/g,'-').replace(/\//g,'-').replace(/[^0-9A-Za-z.-]/g,'');const cleanRating=String(rating).replace(/[^0-9]/g,'');const cleanJob=job.replace(/[^0-9A-Za-z]+/g,'-').replace(/^-+|-+$/g,'').slice(0,28);return `API6A-Flange-${cleanSize}-${cleanRating}psi${cleanJob?'-'+cleanJob:''}.pdf`}
  async function downloadPdf(){const originalTheme=root.dataset.theme||'',oldText=pdfBtn.innerHTML;pdfBtn.disabled=true;pdfBtn.textContent='Preparing PDF…';try{await Promise.all([loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',()=>!!window.html2canvas),loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',()=>!!(window.jspdf&&window.jspdf.jsPDF))]);root.dataset.theme='light';document.documentElement.classList.add('pdf-exporting');document.body.classList.add('pdf-exporting');const gd=document.getElementById('pdfGeneratedDate');if(gd)gd.textContent=new Date().toLocaleDateString('en-CA',{year:'numeric',month:'short',day:'2-digit'});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const shot=await window.html2canvas(document.body,{scale:1.6,useCORS:true,backgroundColor:'#ffffff',logging:false,windowWidth:1040,scrollX:0,scrollY:0});const {jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:'letter',compress:true});const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight(),margin=5,maxW=pw-margin*2,maxH=ph-margin*2,ratio=Math.min(maxW/shot.width,maxH/shot.height),w=shot.width*ratio,h=shot.height*ratio,x=(pw-w)/2,y=(ph-h)/2;pdf.addImage(shot.toDataURL('image/jpeg',0.94),'JPEG',x,y,w,h,undefined,'FAST');pdf.setProperties({title:'Flange Slide Rule — API 6A',subject:'Selected API 6A flange dimensions',author:'Anjan Patel',creator:'tools.anjanpatel.ca'});pdf.save(pdfFileName())}catch(err){console.error(err);alert('PDF download could not be generated. In single-file mode, an internet connection is required to load the PDF engine the first time this page is opened.')}finally{document.documentElement.classList.remove('pdf-exporting');document.body.classList.remove('pdf-exporting');if(originalTheme)root.dataset.theme=originalTheme;else delete root.dataset.theme;updateToggle();pdfBtn.disabled=false;pdfBtn.innerHTML=oldText;fitCanvas()}}
  pdfBtn.addEventListener('click',downloadPdf);
- const y=document.getElementById('copyrightYear');if(y){const cy=new Date().getFullYear();y.textContent=cy>2026?'2026–'+cy:'2026';}
+ const cy=new Date().getFullYear(),yr=cy>2026?'2026–'+cy:'2026';['copyrightYear','termsYear','privacyYear'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=yr;});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));});
  const offlineBadge=document.getElementById('offlineBadge'),offlineText=document.getElementById('offlineText');
  function updateOnlineState(){const off=!navigator.onLine;if(offlineBadge)offlineBadge.classList.toggle('offline',off);if(offlineText)offlineText.textContent=off?'Offline — page already open':'Standalone'}
  window.addEventListener('online',updateOnlineState);window.addEventListener('offline',updateOnlineState);updateOnlineState();
