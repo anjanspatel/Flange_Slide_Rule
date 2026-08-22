@@ -124,7 +124,7 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
   <details class="info-details">
     <summary class="info-toggle">ⓘ About &amp; Disclaimer</summary>
     <div class="info-row">
-      <div class="info-card"><strong>About this tool.</strong> Covers 3,000 and 5,000 psi API 6A flanges (R and RX ring series) for 10 nominal sizes. Select size and pressure rating on the drawing — all dimensions update instantly. Use Download PDF to export the current configuration.</div>
+      <div class="info-card"><strong>About this tool.</strong> Covers 3,000, 5,000, 10,000 and 15,000 psi API 6A flanges for 10 nominal sizes. R and RX rings (3K/5K) and BX rings (10K/15K). Select size and pressure rating on the drawing — all dimensions update instantly. Use Download PDF to export the current configuration.</div>
       <div class="info-card"><strong>Engineering disclaimer.</strong> Quick-reference aid only. Verify dimensions, pressure rating, material requirements, manufacturer documentation, project specifications, and the applicable controlled API requirements before engineering, manufacturing, inspection, or recertification use.</div>
     </div>
   </details>
@@ -164,6 +164,7 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
     <p>This tool and all data within it are provided <strong>"as is"</strong> without warranty of any kind, express or implied, including but not limited to accuracy, completeness, fitness for a particular purpose, or non-infringement. Anjan Patel makes no representations regarding the correctness of dimensions, ratings, or material data contained herein.</p>
     <h3>Engineering Disclaimer</h3>
     <p>Dimensions, pressure ratings, ring gasket designations, bolt data, and all other values must be independently verified against the applicable controlled API Specification 6A edition, relevant codes, regulatory requirements, and manufacturer documentation before use in engineering, design, fabrication, inspection, procurement, or recertification activities.</p>
+    <p>Data for 10,000 psi and 15,000 psi ratings are working estimates and have not been independently verified against a controlled edition of API Spec 6A. Do not use for engineering, fabrication, inspection, or recertification purposes without independent verification.</p>
     <h3>Limitation of Liability</h3>
     <p>To the maximum extent permitted by applicable law, Anjan Patel shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of this tool or reliance on any data it provides.</p>
     <h3>Intellectual Property</h3>
@@ -270,34 +271,50 @@ const data = {
   "2 1/16": {
     "3000":  {bore:2.09, od:8.50,  rf:4.88, hub:4.12, bc:6.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:24},
     "5000":  {bore:2.09, od:8.50,  rf:4.88, hub:4.12, bc:6.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:24},
+    "10000": {bore:2.09, od:11.00, rf:6.75, hub:6.00, bc:8.75,  n:8,  boltDia:1.250, boltHole:1.375, studLen:8.50,  chamfer:0.12, hubMin:5.44, ring:"BX-150"},
+    "15000": {bore:2.09, od:12.44, rf:7.81, hub:7.06, bc:9.75,  n:8,  boltDia:1.500, boltHole:1.625, studLen:10.25, chamfer:0.12, hubMin:6.31, ring:"BX-150"},
   },
   "2 9/16": {
     "3000":  {bore:2.59, od:9.62,  rf:5.38, hub:4.88, bc:7.50,  n:8,  boltDia:1.000, boltHole:1.125, studLen:6.50,  chamfer:0.12, hubMin:4.44, ring:27},
     "5000":  {bore:2.59, od:9.62,  rf:5.38, hub:4.88, bc:7.50,  n:8,  boltDia:1.000, boltHole:1.125, studLen:6.50,  chamfer:0.12, hubMin:4.44, ring:27},
+    "10000": {bore:2.59, od:12.25, rf:7.75, hub:7.25, bc:10.00, n:8,  boltDia:1.500, boltHole:1.625, studLen:10.25, chamfer:0.12, hubMin:6.44, ring:"BX-151"},
+    "15000": {bore:2.59, od:13.25, rf:8.44, hub:8.12, bc:10.75, n:8,  boltDia:1.625, boltHole:1.750, studLen:11.00, chamfer:0.12, hubMin:7.13, ring:"BX-151"},
   },
   "3 1/8": {
     "3000":  {bore:3.22, od:9.50,  rf:6.12, hub:5.00, bc:7.50,  n:8,  boltDia:0.875, boltHole:1.000, studLen:6.00,  chamfer:0.12, hubMin:4.31, ring:31},
     "5000":  {bore:3.22, od:10.50, rf:6.62, hub:5.25, bc:8.00,  n:8,  boltDia:1.125, boltHole:1.250, studLen:7.25,  chamfer:0.12, hubMin:4.94, ring:35},
+    "10000": {bore:3.22, od:14.50, rf:8.50, hub:8.50, bc:11.50, n:8,  boltDia:1.625, boltHole:1.750, studLen:11.50, chamfer:0.12, hubMin:7.38, ring:"BX-152"},
+    "15000": {bore:3.22, od:15.75, rf:9.75, hub:9.75, bc:12.75, n:8,  boltDia:1.875, boltHole:2.000, studLen:13.25, chamfer:0.12, hubMin:8.63, ring:"BX-152"},
   },
   "4 1/16": {
     "3000":  {bore:4.28, od:11.50, rf:7.12, hub:6.25, bc:9.25,  n:8,  boltDia:1.125, boltHole:1.250, studLen:7.00,  chamfer:0.12, hubMin:4.81, ring:37},
     "5000":  {bore:4.28, od:12.25, rf:7.62, hub:6.38, bc:9.50,  n:8,  boltDia:1.250, boltHole:1.375, studLen:8.00,  chamfer:0.12, hubMin:5.19, ring:39},
+    "10000": {bore:4.28, od:16.00, rf:10.00,hub:9.75, bc:13.00, n:12, boltDia:1.500, boltHole:1.625, studLen:11.00, chamfer:0.12, hubMin:8.50, ring:"BX-153"},
+    "15000": {bore:4.28, od:18.75, rf:11.50,hub:11.25,bc:15.00, n:8,  boltDia:2.000, boltHole:2.125, studLen:14.50, chamfer:0.12, hubMin:10.00,ring:"BX-153"},
   },
   "5 1/8": {
     "3000":  {bore:5.16, od:13.75, rf:8.50, hub:7.50, bc:11.00, n:8,  boltDia:1.250, boltHole:1.375, studLen:7.75,  chamfer:0.12, hubMin:5.31, ring:41},
     "5000":  {bore:5.16, od:14.75, rf:9.00, hub:7.75, bc:11.50, n:8,  boltDia:1.500, boltHole:1.625, studLen:10.00, chamfer:0.12, hubMin:6.44, ring:44},
+    "10000": {bore:5.16, od:20.00, rf:12.50,hub:12.00,bc:16.50, n:12, boltDia:1.875, boltHole:2.000, studLen:14.25, chamfer:0.12, hubMin:9.94, ring:"BX-154"},
+    "15000": {bore:5.16, od:22.44, rf:14.19,hub:14.00,bc:18.50, n:8,  boltDia:2.250, boltHole:2.375, studLen:17.00, chamfer:0.12, hubMin:11.94,ring:"BX-154"},
   },
   "7 1/16": {
     "3000":  {bore:7.16, od:15.00, rf:9.50, hub:9.25, bc:12.50, n:12, boltDia:1.125, boltHole:1.250, studLen:8.00,  chamfer:0.25, hubMin:5.81, ring:45},
     "5000":  {bore:7.16, od:15.50, rf:9.75, hub:9.00, bc:12.50, n:12, boltDia:1.375, boltHole:1.500, studLen:10.75, chamfer:0.25, hubMin:7.13, ring:46},
+    "10000": {bore:7.16, od:22.00, rf:15.00,hub:14.00,bc:18.50, n:12, boltDia:2.000, boltHole:2.125, studLen:16.00, chamfer:0.25, hubMin:12.06,ring:"BX-155"},
+    "15000": {bore:7.16, od:25.81, rf:17.00,hub:17.12,bc:21.50, n:12, boltDia:2.375, boltHole:2.500, studLen:19.25, chamfer:0.25, hubMin:14.00,ring:"BX-155"},
   },
   "9": {
     "3000":  {bore:9.03, od:18.50, rf:12.12,hub:11.75,bc:15.50, n:12, boltDia:1.375, boltHole:1.500, studLen:9.00,  chamfer:0.25, hubMin:6.69, ring:49},
     "5000":  {bore:9.03, od:19.00, rf:12.50,hub:11.50,bc:15.50, n:12, boltDia:1.625, boltHole:1.750, studLen:12.00, chamfer:0.25, hubMin:8.81, ring:50},
+    "10000": {bore:9.03, od:26.00, rf:18.00,hub:17.00,bc:22.00, n:16, boltDia:2.000, boltHole:2.125, studLen:17.00, chamfer:0.25, hubMin:13.56,ring:"BX-156"},
+    "15000": {bore:9.03, od:32.69, rf:22.31,hub:21.62,bc:27.50, n:12, boltDia:3.000, boltHole:3.125, studLen:25.00, chamfer:0.25, hubMin:18.69,ring:"BX-156"},
   },
   "11": {
     "3000":  {bore:11.03,od:21.50, rf:14.25,hub:14.50,bc:18.50, n:16, boltDia:1.375, boltHole:1.500, studLen:9.50,  chamfer:0.25, hubMin:7.56, ring:53},
     "5000":  {bore:11.03,od:23.00, rf:14.63,hub:14.50,bc:19.00, n:12, boltDia:1.875, boltHole:2.000, studLen:13.75, chamfer:0.25, hubMin:10.44,ring:54},
+    "10000": {bore:11.03,od:30.00, rf:21.00,hub:20.00,bc:25.25, n:16, boltDia:2.375, boltHole:2.500, studLen:20.00, chamfer:0.25, hubMin:16.13,ring:"BX-157"},
+    "15000": {bore:11.03,od:38.75, rf:26.00,hub:26.50,bc:32.25, n:12, boltDia:3.500, boltHole:3.625, studLen:29.75, chamfer:0.25, hubMin:22.25,ring:"BX-157"},
   },
   // Note: verify 13 5/8" and 16 3/4" dimensions vs. API Spec 6A Table 6
   "13 5/8": {
@@ -331,6 +348,15 @@ const ring = {
   58:{pd:15.188, w:0.750, d:0.562},
   65:{pd:18.500, w:0.813, d:0.625},
   66:{pd:18.500, w:0.844, d:0.641},
+  // BX-type rings (API 6BX flanges, 10,000 and 15,000 psi)
+  "BX-150":{pd:3.594,  w:0.469, d:0.406},
+  "BX-151":{pd:4.094,  w:0.469, d:0.406},
+  "BX-152":{pd:5.000,  w:0.500, d:0.438},
+  "BX-153":{pd:6.375,  w:0.531, d:0.469},
+  "BX-154":{pd:7.938,  w:0.594, d:0.531},
+  "BX-155":{pd:10.688, w:0.656, d:0.594},
+  "BX-156":{pd:13.063, w:0.719, d:0.656},
+  "BX-157":{pd:15.563, w:0.781, d:0.719},
 };
 
 const RADIUS = {
@@ -388,9 +414,10 @@ function render(){
     setIn('v_gd', dispVal(rg.d));
   }
 
-  const ringLabel = 'R-' + d.ring;
-  document.getElementById('ringR').textContent = 'R-' + d.ring;
-  document.getElementById('ringRX').textContent = 'RX-' + d.ring;
+  const isBX = typeof d.ring === 'string';
+  const ringLabel = isBX ? d.ring : 'R-' + d.ring;
+  document.getElementById('ringR').textContent = isBX ? d.ring : 'R-' + d.ring;
+  document.getElementById('ringRX').textContent = isBX ? '—' : 'RX-' + d.ring;
   const note = document.getElementById('selectionNote');
   if(note) note.textContent = s + '" | ' + Number(r).toLocaleString() + ' psi | ' + ringLabel;
   const dimNames={v_od:'Outside diameter',v_rf:'Raised-face diameter',v_god:'Ring groove outside diameter',v_gpd:'Ring groove pitch diameter',v_gid:'Ring groove inside diameter',v_gw:'Ring groove width',v_gd:'Ring groove depth',v_max:'Chamfer / maximum',v_bore:'Bore diameter',v_hub:'Hub diameter',v_min:'Minimum hub dimension',v_radius:'Radius',v_studlen:'Stud length',v_holes:'Number of bolt holes',v_studdia:'Stud diameter',v_bc:'Bolt circle diameter',v_bolthole:'Bolt hole diameter'};
