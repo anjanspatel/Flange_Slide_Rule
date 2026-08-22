@@ -3,7 +3,7 @@
 **Interactive quick-reference tool for API Specification 6A / ISO 10423 flange dimensions and pressure ratings.**
 
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-0B1F3A?style=flat-square&logo=github)](https://anjanspatel.github.io/Flange_Slide_Rule/)
-[![Version](https://img.shields.io/badge/version-1.3-D97706?style=flat-square)](https://anjanspatel.github.io/Flange_Slide_Rule/)
+[![Version](https://img.shields.io/badge/version-1.5-D97706?style=flat-square)](https://anjanspatel.github.io/Flange_Slide_Rule/)
 [![License](https://img.shields.io/badge/license-Proprietary-667085?style=flat-square)](#license)
 
 ---
@@ -28,14 +28,15 @@ Built for engineers and inspectors who need fast dimensional lookups in the fiel
 
 | Feature | Details |
 |---|---|
-| **Pressure ratings** | 3,000 · 5,000 · 10,000 · 15,000 psi |
+| **Pressure ratings** | 3,000 · 5,000 psi |
 | **Nominal sizes** | 2 1/16" · 2 9/16" · 3 1/8" · 4 1/16" · 5 1/8" · 7 1/16" · 9" · 11" · 13 5/8" · 16 3/4" |
-| **Ring gaskets** | R / RX (3K/5K, API 6B flanges) and BX (10K/15K, API 6BX flanges) |
+| **Ring gaskets** | R and RX series (API 6B flanges) |
 | **Unit toggle** | Inch (fractional + decimal) ↔ Metric (mm) — remembered across sessions |
 | **Clipboard copy** | Click any dimension value to copy it to the clipboard |
 | **PDF export** | One-page landscape PDF of the current configuration |
 | **Dark / Light mode** | Toggle in the header — defaults to light, preference saved |
 | **Offline ready** | Fully self-contained — works with no internet connection after first load |
+| **Accessible** | Keyboard navigation, ARIA labels, skip link, visible focus states |
 | **Responsive** | Scales on any screen size from mobile to widescreen |
 
 ---
@@ -54,7 +55,7 @@ For each size / rating combination the tool displays:
 - **Stud Bolt Dia.** — stud bolt diameter
 - **Stud Length** — approximate stud length
 - **Bolt Hole Dia.** — bolt hole diameter
-- **Ring Gasket** — ring number (R-xx / RX-xx for 3K/5K; BX-xxx for 10K/15K)
+- **Ring Gasket** — ring number (R-xx / RX-xx)
 - **Corner Radius** — bore corner radius per rating
 
 ---
@@ -65,13 +66,13 @@ For each size / rating combination the tool displays:
 Open **[https://anjanspatel.github.io/Flange_Slide_Rule/](https://anjanspatel.github.io/Flange_Slide_Rule/)** in any modern browser.
 
 ### Offline / Local
-1. Download `index.html` from this repository (or from the Releases section).
+1. Download `index.html` from this repository.
 2. Open it directly in any browser — no server required.
 3. All data and images are embedded; the file is fully self-contained.
 
 ### Usage
 1. Use the **FLANGE SIZE** dropdown to select the nominal size.
-2. Use the **PRESSURE RATING** dropdown to select the rating (3K / 5K / 10K / 15K).
+2. Use the **PRESSURE RATING** dropdown to select 3,000 or 5,000 psi.
 3. All dimensions update immediately on the engineering drawing.
 4. Click any highlighted value to **copy** it to the clipboard.
 5. Use **in / mm** to toggle between imperial and metric display.
@@ -95,15 +96,9 @@ Open **[https://anjanspatel.github.io/Flange_Slide_Rule/](https://anjanspatel.gi
 
 ## Data Coverage
 
-### Standard Data (Verified)
-Data for **3,000 psi** and **5,000 psi** ratings across all sizes is based on API Specification 6A / ISO 10423 Table 6 (dimensional data) and Table 9 (ring gasket data), R and RX ring series.
+Data for **3,000 psi** and **5,000 psi** ratings across all 10 nominal sizes is based on API Specification 6A / ISO 10423 Table 6 (dimensional data) and Table 9 (ring gasket data), R and RX ring series.
 
-### Extended Data (Estimates — Verify Before Use)
-> ⚠ **Data for 10,000 psi and 15,000 psi ratings, and for nominal sizes 13 5/8" and 16 3/4", are engineering estimates and have not been independently verified against the controlled edition of API Spec 6A.**
->
-> **Do not use for engineering, design, procurement, fabrication, inspection, or recertification without independent verification against the current edition of API Specification 6A.**
-
-BX ring gasket data (BX-150 through BX-157) references API 6BX-type flanges.
+> ⚠ Dimensions for nominal sizes **13 5/8"** and **16 3/4"** should be verified against the current controlled edition of API Spec 6A before engineering use.
 
 ---
 
@@ -121,8 +116,9 @@ All dimensions, pressure ratings, ring gasket designations, bolt data, and all o
 
 ```
 Flange_Slide_Rule/
-├── index.html      # Complete standalone tool (all data, images, and logic embedded)
-└── README.md       # This file
+├── index.html       # Complete standalone tool (all data, images, and logic embedded)
+├── index.v1.3.html  # Archived — v1.3 with 10K/15K data, pre-accessibility update
+└── README.md        # This file
 ```
 
 ---
@@ -132,9 +128,11 @@ Flange_Slide_Rule/
 | Version | Date | Notes |
 |---|---|---|
 | v1.0 | 2026-08 | Initial release — 3K/5K ratings, 8 sizes |
-| v1.1 | 2026-08 | Added GitHub Pages deployment |
+| v1.1 | 2026-08 | GitHub Pages deployment |
 | v1.2 | 2026-08 | Published to main branch |
 | v1.3 | 2026-08 | Added 10K/15K ratings, BX ring gaskets, 13 5/8" and 16 3/4" sizes, bolt hole display, metric toggle, clipboard copy, Terms & Privacy, favicon |
+| v1.4 | 2026-08 | Print/PDF scale fix (222mm, 0.90 scale), accessibility (skip link, ARIA labels, focus states, modal focus trap, `<main>` landmark), watermark in PDF, job note first in filename |
+| v1.5 | 2026-08 | Removed 10K/15K data — tool now covers verified 3K/5K data only; 13 5/8" and 16 3/4" retained |
 
 ---
 
