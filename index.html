@@ -115,23 +115,23 @@ body{
 
 /* ═══ 5. FLOATING NAVBAR ════════════════════════════════════════════════ */
 .site-header{
-  position:sticky;top:0;z-index:100;isolation:isolate;
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;isolation:isolate;
   background:var(--header-bg);border-bottom:1px solid var(--line);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  transition:background .22s,border-color .22s,top .34s cubic-bezier(.4,0,.2,1),
-    width .34s cubic-bezier(.4,0,.2,1),max-width .34s,border-radius .34s,
-    box-shadow .34s,left .34s,transform .34s;
+  transition:background .22s,border-color .22s,
+    top .34s cubic-bezier(.4,0,.2,1),
+    left .34s cubic-bezier(.4,0,.2,1),
+    right .34s cubic-bezier(.4,0,.2,1),
+    border-radius .34s,box-shadow .34s;
 }
 .site-header.is-floating{
-  position:fixed;top:14px;left:50%;
-  transform:translateX(-50%);
-  width:calc(100% - 44px);max-width:1000px;
-  border-radius:24px;
-  border:1px solid var(--line-2);
-  border-bottom:1px solid var(--line-2);
+  top:10px;left:16px;right:16px;
+  border-radius:18px;
+  border-color:var(--line-2);
   box-shadow:0 12px 40px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.10);
 }
-.nav-placeholder{height:0;transition:height .34s cubic-bezier(.4,0,.2,1)}
+.nav-placeholder{transition:height .34s cubic-bezier(.4,0,.2,1)}
 .header-inner{
   max-width:1100px;margin:0 auto;padding:0 28px;
   height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -276,7 +276,7 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   .hero-title{font-size:30px}
   .tools-section{padding:0 18px 64px}
   footer{padding:20px 18px 28px}
-  .site-header.is-floating{width:calc(100% - 24px);top:10px;border-radius:18px}
+  @media(max-width:600px){.site-header.is-floating{top:6px;left:8px;right:8px;border-radius:14px}}
 }
 @media(max-width:400px){.hero-title{font-size:27px}}
 @media(prefers-reduced-motion:reduce){
@@ -422,14 +422,12 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
 /* ── 5. Floating Navbar ── */
 (function(){
   var hdr=document.getElementById('siteHeader'),ph=document.getElementById('navPlaceholder'),on=false;
-  function tick(){
-    var want=window.scrollY>80;
-    if(want===on)return;
-    on=want;
-    if(on){hdr.classList.add('is-floating');ph.style.height=hdr.offsetHeight+'px'}
-    else{hdr.classList.remove('is-floating');ph.style.height='0'}
-  }
+  function setH(){ph.style.height=hdr.offsetHeight+'px'}
+  function tick(){var want=window.scrollY>80;if(want===on)return;on=want;hdr.classList.toggle('is-floating',on)}
+  setH();
   window.addEventListener('scroll',tick,{passive:true});
+  window.addEventListener('resize',setH,{passive:true});
+  tick();
 })();
 
 /* ── 4. Text Generate Effect ── */
