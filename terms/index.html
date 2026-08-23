@@ -46,6 +46,10 @@ footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--text)}
 @media(max-width:600px){.content{padding:32px 16px 60px}.page-title{font-size:22px}}
+
+.header-right{display:flex;align-items:center;gap:10px}
+.theme-btn{background:none;border:1px solid var(--line);border-radius:6px;color:var(--muted);cursor:pointer;font-size:15px;padding:5px 9px;line-height:1;transition:border-color .15s,color .15s}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
 </style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/favicon.svg">
@@ -62,7 +66,10 @@ footer a:hover{color:var(--text)}
       <span class="logo-wrap" style="width:40px;height:40px;border-radius:9px;background:#fff;border:1px solid rgba(11,29,45,.1);display:grid;place-items:center;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 4px rgba(11,29,45,.08)"><img src="/logo.png" alt="Anjan Patel monogram" style="width:36px;height:33px;display:block"></span>
       <span class="brand-name">ANJAN PATEL</span>
     </a>
-    <a class="back-link" href="/">&#8592; Back to Tools</a>
+    <div class="header-right">
+      <a class="back-link" href="/">&#8592; All Tools</a>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme"><span id="themeIcon" aria-hidden="true"></span></button>
+    </div>
   </div>
 </header>
 
@@ -143,7 +150,16 @@ footer a:hover{color:var(--text)}
 <script>
 (function(){
   var root=document.documentElement;
-  try{var t=localStorage.getItem('pd-theme');if(t)root.dataset.theme=t}catch(e){}
+  var btn=document.getElementById('themeBtn');
+  var icon=document.getElementById('themeIcon');
+  function isDark(){var t=root.dataset.theme;return t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)}
+  function syncIcon(){icon.textContent=isDark()?'\u2600':'\u263e'}
+  function apply(t){if(t){root.dataset.theme=t}else{delete root.dataset.theme}syncIcon()}
+  function stored(){try{return localStorage.getItem('pd-theme')||''}catch(e){return''}}
+  function store(t){try{localStorage.setItem('pd-theme',t)}catch(e){}}
+  apply(stored());
+  btn.addEventListener('click',function(){var next=isDark()?'light':'dark';store(next);apply(next)});
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){if(!stored())apply('')});
   var now=new Date();
   document.getElementById('yr').textContent=now.getFullYear();
   document.getElementById('effdate').textContent=now.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});

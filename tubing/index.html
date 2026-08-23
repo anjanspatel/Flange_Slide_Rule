@@ -250,27 +250,6 @@ input[type=number]:focus{
 .btn-pdf:hover{opacity:.88}
 .btn-pdf:active{transform:scale(.98)}
 
-/* ── about ── */
-.about-wrap{margin-top:28px}
-details.about-det{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;
-}
-details.about-det summary{
-  padding:13px 18px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px;
-  user-select:none;list-style:none;
-}
-details.about-det summary::-webkit-details-marker{display:none}
-details.about-det summary::before{
-  content:'▶';font-size:8px;color:var(--brand-orange);
-  transition:transform .18s;display:inline-block;flex:0 0 auto;
-}
-details.about-det[open] summary::before{transform:rotate(90deg)}
-.about-body{padding:0 18px 18px;font-size:13px;line-height:1.75;color:var(--muted)}
-.about-body p{margin-bottom:10px}
-.about-body a{color:var(--brand-orange);text-decoration:none}
-.about-body a:hover{text-decoration:underline}
-.about-body strong{color:var(--text)}
 
 /* ── footer ── */
 footer{
@@ -307,7 +286,7 @@ footer a:hover{color:var(--text)}
     </a>
     <div class="header-right">
       <a class="hub-link" href="/">&#8592; All Tools</a>
-      <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme">◑</button>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme"><span id="themeIcon" aria-hidden="true"></span></button>
     </div>
   </div>
 </header>
@@ -438,17 +417,6 @@ footer a:hover{color:var(--text)}
   </div>
 
   <!-- About -->
-  <div class="about-wrap">
-    <details class="about-det">
-      <summary>ⓘ About &amp; Notes</summary>
-      <div class="about-body">
-        <p>This calculator determines the <strong>safe working load (SWL)</strong> for tubing blocks and safety blocks based on measured geometry and Brinell hardness.</p>
-        <p><strong>Formula basis:</strong> UTS is estimated from BHN using the empirical relationship UTS&nbsp;(psi)&nbsp;=&nbsp;500&nbsp;×&nbsp;BHN, valid for carbon and alloy steels. Shear strength uses the von Mises yield criterion: τ&nbsp;=&nbsp;UTS&nbsp;÷&nbsp;√3&nbsp;≈&nbsp;0.577&nbsp;×&nbsp;UTS. A safety factor of 3 is applied throughout.</p>
-        <p><strong>Measurement practice:</strong> Block geometry (width and thickness) must be measured fresh with calibrated calipers each time — dimensional variation between nominally identical blocks is significant. Never rely on nominal or historical dimensions.</p>
-        <p><strong>Limitations:</strong> This tool provides a reference estimate only and does not constitute professional engineering advice. Results must be independently verified by a licensed Professional Engineer (P.Eng.) before any load-bearing application. See <a href="/terms/">Terms &amp; Disclaimer</a>.</p>
-      </div>
-    </details>
-  </div>
 </main>
 
 <footer>
@@ -466,15 +434,25 @@ footer a:hover{color:var(--text)}
 (function(){
   var root = document.documentElement;
   var btn  = document.getElementById('themeBtn');
+  var icon = document.getElementById('themeIcon');
   function isDark(){
     var t = root.dataset.theme;
     return t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches);
   }
-  try{var s=localStorage.getItem('pd-theme');if(s)root.dataset.theme=s}catch(e){}
+  function syncIcon(){ icon.textContent = isDark() ? '\u2600' : '\u263e'; }
+  function apply(t){
+    if(t){ root.dataset.theme = t; } else { delete root.dataset.theme; }
+    syncIcon();
+  }
+  function stored(){ try{return localStorage.getItem('pd-theme')||''}catch(e){return ''} }
+  function store(t){ try{localStorage.setItem('pd-theme',t)}catch(e){} }
+  apply(stored());
   btn.addEventListener('click',function(){
     var next = isDark()?'light':'dark';
-    root.dataset.theme = next;
-    try{localStorage.setItem('pd-theme',next)}catch(e){}
+    store(next); apply(next);
+  });
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){
+    if(!stored()) apply('');
   });
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
