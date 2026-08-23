@@ -1,15 +1,7 @@
 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="5" fill="#0B1D2D"/>
-  <!-- A left leg: white -->
-  <polygon points="2,27 7,27 14.5,3 11,3" fill="white"/>
-  <!-- P stem: steel blue -->
-  <polygon points="14.5,3 19,3 19,27 14.5,27" fill="#8FA3B8"/>
-  <!-- P top bar -->
-  <polygon points="14.5,3 29.5,3 29.5,9 14.5,9" fill="#8FA3B8"/>
-  <!-- P bowl right (angled bottom) -->
-  <polygon points="25,9 29.5,9 29,17 25,17" fill="#8FA3B8"/>
-  <!-- P crossbar -->
-  <polygon points="14.5,14 29.5,14 29,17 14.5,17" fill="#8FA3B8"/>
-  <!-- Orange triangle -->
-  <polygon points="7,27 14.5,27 11,19" fill="#F28C18"/>
+  <rect width="32" height="32" rx="6" fill="#0B1D2D"/>
+  <text x="16" y="22.5" text-anchor="middle"
+    font-family="'Helvetica Neue',Arial,sans-serif"
+    font-weight="900" font-size="17" letter-spacing="-1"
+    fill="#ffffff">AP</text>
 </svg>
