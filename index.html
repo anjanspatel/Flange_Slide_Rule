@@ -83,6 +83,7 @@
 /* ═══ RESET ══════════════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
+main,footer{position:relative;z-index:1}
 body{
   background:var(--bg);color:var(--text);
   font-family:'IBM Plex Sans',Arial,Helvetica,sans-serif;
@@ -92,7 +93,7 @@ body{
 
 /* ═══ HEADER ════════════════════════════════════════════════════════════ */
 .site-header{
-  position:sticky;top:0;z-index:100;
+  position:sticky;top:0;z-index:100;isolation:isolate;
   background:var(--header-bg);border-bottom:1px solid var(--line);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   transition:background .22s,border-color .22s;
@@ -259,6 +260,51 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
 
+/* ═══ ACETERNITY-STYLE EFFECTS ══════════════════════════════════════════ */
+
+/* 1. Shimmer sweep on hero "Tools" span */
+@keyframes shimmer-sweep{
+  0%{background-position:-200% center}
+  100%{background-position:200% center}
+}
+.hero-title span{
+  background:linear-gradient(90deg,var(--brand-orange) 25%,#ffdd80 45%,#E07C14 55%,var(--brand-orange) 75%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer-sweep 3.5s linear infinite;
+}
+
+/* 2. Spotlight cursor glow inside cards */
+.tool-card{
+  --mx:50%;--my:50%;
+}
+.tool-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle 220px at var(--mx) var(--my),rgba(242,140,24,.16) 0%,transparent 65%);
+  opacity:0;transition:opacity .35s;pointer-events:none;z-index:0;
+}
+.tool-card:hover::after{opacity:1}
+/* Ensure card children sit above spotlight layer */
+.tool-card > *{position:relative;z-index:1}
+
+/* 3. Animated shimmer border on hover */
+@keyframes border-shift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.tool-card:hover{
+  border-color:transparent;
+  background:
+    linear-gradient(var(--card-hover-bg),var(--card-hover-bg)) padding-box,
+    linear-gradient(90deg,#E07C14,#ffdd80,#F28C18,#E07C14) border-box;
+  background-size:200% 100%;
+  animation:border-shift 2s linear infinite;
+}
+/* Override the before-strip with the animated border in effect */
+.tool-card:hover::before{opacity:0}
+
 .footer-disc-details{margin-bottom:14px}
 .footer-disc-details summary{cursor:pointer;font-size:10px;color:var(--muted);letter-spacing:.04em;user-select:none;list-style:none;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:20px;transition:color .15s,border-color .15s}
 .footer-disc-details summary::-webkit-details-marker{display:none}
@@ -305,7 +351,7 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
     </div>
     <div class="tool-grid">
 
-      <a class="tool-card" href="/flange/">
+      <a class="tool-card" href="/flange/" target="_blank" rel="noopener">
         <div class="card-top">
           <span class="card-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -388,9 +434,68 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   btn.addEventListener('click',function(){
     var next=isDark()?'light':'dark';
     store(next);apply(next);
+    updateBgTheme();
   });
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){
     if(!stored())apply('');
+    updateBgTheme();
+  });
+})();
+
+/* ── Background canvas: subtle grid + drifting glow ── */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var cv=document.createElement('canvas');
+  cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+  document.body.prepend(cv);
+  var ctx=cv.getContext('2d'),w,h,t=0,raf;
+  function dark(){
+    var d=document.documentElement.dataset.theme;
+    return d==='dark'||(d!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);
+  }
+  window.updateBgTheme=function(){};
+  function resize(){
+    w=cv.width=window.innerWidth;
+    h=cv.height=window.innerHeight;
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    var dk=dark();
+    var gridColor=dk?'rgba(242,140,24,0.045)':'rgba(11,29,45,0.035)';
+    /* grid */
+    ctx.strokeStyle=gridColor;ctx.lineWidth=1;
+    var step=72;
+    for(var x=0;x<w;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
+    for(var y=0;y<h;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
+    /* drifting glow spots */
+    t+=0.004;
+    var spots=[
+      {gx:w*0.25+Math.sin(t*0.8)*w*0.18, gy:h*0.35+Math.cos(t*0.5)*h*0.15, r:380, a:dk?0.10:0.06},
+      {gx:w*0.75+Math.cos(t*0.6)*w*0.14, gy:h*0.65+Math.sin(t*0.7)*h*0.12, r:300, a:dk?0.07:0.04}
+    ];
+    spots.forEach(function(s){
+      var g=ctx.createRadialGradient(s.gx,s.gy,0,s.gx,s.gy,s.r);
+      g.addColorStop(0,'rgba(242,140,24,'+s.a+')');
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    });
+    raf=requestAnimationFrame(draw);
+  }
+  resize();window.addEventListener('resize',resize);draw();
+})();
+
+/* ── Spotlight cursor on cards ── */
+(function(){
+  document.querySelectorAll('.tool-card').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.setProperty('--mx','50%');
+      card.style.setProperty('--my','50%');
+    });
   });
 })();
 </script>
