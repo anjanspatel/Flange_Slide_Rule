@@ -72,7 +72,10 @@ body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-ser
 .soon-icon{width:38px;height:38px;border-radius:9px;border:1.5px dashed var(--soon-border);display:grid;place-items:center}
 .soon-label{font-size:12px;font-weight:700;color:var(--soon-text)}
 .soon-sub{font-size:11px;color:var(--soon-text);opacity:.8}
-footer{border-top:1px solid var(--line);padding:20px;text-align:center;font-size:10.5px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:20px 20px 24px;font-size:10.5px;color:var(--muted)}
+.footer-disclaimer{max-width:760px;margin:0 auto 14px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);font-size:10px;line-height:1.6;color:var(--muted);text-align:left}
+.footer-disclaimer strong{color:var(--text)}
+.footer-links{text-align:center}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--text)}
 @media(max-width:600px){
@@ -102,7 +105,6 @@ footer a:hover{color:var(--text)}
 </header>
 
 <div class="hero">
-  <div class="hero-eyebrow">Oil &amp; Gas &middot; API Standards</div>
   <h1 class="hero-title">Engineering Tools</h1>
   <p class="hero-sub">Quick-reference tools built for field and office use. Select a tool below to get started.</p>
 </div>
@@ -155,9 +157,16 @@ footer a:hover{color:var(--text)}
 </div>
 
 <footer>
-  <span>&copy; <span id="yr"></span> Anjan Patel. All rights reserved.</span>
-  &nbsp;&middot;&nbsp;
-  <a href="https://www.linkedin.com/in/anjanspatel" target="_blank" rel="noopener">LinkedIn</a>
+  <div class="footer-disclaimer">
+    <strong>Reference Only &mdash; Not Engineering Advice.</strong> All tools on this site are provided for informational and reference purposes only. They do not constitute professional engineering advice, design, or certification. All dimensions, specifications, and outputs must be independently verified against the applicable published standards (API 6A, ISO 10423, or other relevant documents) and reviewed by a licensed Professional Engineer (P.Eng.) before use in any application. Anjan Patel makes no representations or warranties of any kind, express or implied, as to the accuracy, completeness, or fitness for a particular purpose of any content on this site. Use of these tools is entirely at your own risk.
+  </div>
+  <div class="footer-links">
+    <span>&copy; <span id="yr"></span> Anjan Patel. All rights reserved.</span>
+    &nbsp;&middot;&nbsp;
+    <a href="/terms/">Terms &amp; Disclaimer</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://www.linkedin.com/in/anjanspatel" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
 </footer>
 
 <script>
