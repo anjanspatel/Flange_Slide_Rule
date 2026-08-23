@@ -8,19 +8,19 @@
 <meta name="description" content="Precision engineering reference tools built for field and office use.">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://app.anjanpatel.ca/">
+<meta property="og:url" content="https://tools.anjanpatel.ca/">
 <meta property="og:title" content="Anjan Patel — Engineering Tools">
 <meta property="og:description" content="Precision engineering reference tools built for field and office use. API 6A Flange Slide Rule and more.">
-<meta property="og:image" content="https://app.anjanpatel.ca/og.png">
+<meta property="og:image" content="https://tools.anjanpatel.ca/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Anjan Patel — Engineering Tools">
 <meta name="twitter:description" content="Precision engineering reference tools built for field and office use.">
-<meta name="twitter:image" content="https://app.anjanpatel.ca/og.png">
+<meta name="twitter:image" content="https://tools.anjanpatel.ca/og.png">
 
 <meta name="theme-color" content="#0B1D2D">
-<link rel="canonical" href="https://app.anjanpatel.ca/">
+<link rel="canonical" href="https://tools.anjanpatel.ca/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/favicon.svg">
 
@@ -191,11 +191,6 @@ body{
   margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);
 }
 .section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.section-pill{
-  font-size:9.5px;font-weight:600;color:var(--brand-orange);
-  background:var(--pill-bg);border:1px solid var(--pill-border);
-  border-radius:10px;padding:2px 9px;
-}
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 
 /* ── Tool card ── */
@@ -263,16 +258,7 @@ body{
 }
 .tool-card:hover .cta-arrow{transform:translateX(4px)}
 
-/* ── Coming soon ── */
-.card-soon{
-  background:var(--soon-bg);border:1.5px dashed var(--soon-border);
-  border-radius:16px;padding:26px;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;min-height:210px;gap:12px;
-}
-.soon-icon-wrap{width:46px;height:46px;border-radius:11px;border:1.5px dashed var(--soon-border);display:grid;place-items:center}
-.soon-label{font-size:13px;font-weight:600;color:var(--soon-text)}
-.soon-sub{font-size:11.5px;color:var(--soon-text);opacity:.7;line-height:1.55;max-width:200px}
+
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
 footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border-color .22s}
@@ -342,7 +328,6 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   <div class="tools-section">
     <div class="section-row">
       <span class="section-label">Available Tools</span>
-      <span class="section-pill">2 Live</span>
     </div>
     <div class="tool-grid">
 
@@ -403,27 +388,6 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
           <svg class="cta-arrow" viewBox="0 0 14 14" aria-hidden="true"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="7,2 12,7 7,12"/></svg>
         </div>
       </a>
-
-      <div class="card-soon" role="status" aria-label="Pipe Schedule tool in development">
-        <span class="soon-icon-wrap" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--soon-text)" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="11" cy="11" r="9"/><circle cx="11" cy="11" r="5.5"/>
-            <line x1="11" y1="2" x2="11" y2="5.5"/><line x1="11" y1="16.5" x2="11" y2="20"/>
-          </svg>
-        </span>
-        <div class="soon-label">Pipe Schedule</div>
-        <div class="soon-sub">Wall thickness, weight per foot, and bore for ASME B36.10M / B36.19M</div>
-      </div>
-
-      <div class="card-soon" role="status" aria-label="Bolt torque tool in development">
-        <span class="soon-icon-wrap" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="var(--soon-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11,2 18,6 18,16 11,20 4,16 4,6"/><circle cx="11" cy="11" r="3.2"/>
-          </svg>
-        </span>
-        <div class="soon-label">Bolt Torque</div>
-        <div class="soon-sub">API 6A stud torque values by size, grade, and lubricant condition</div>
-      </div>
 
     </div>
   </div>
