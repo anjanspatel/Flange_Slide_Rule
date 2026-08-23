@@ -93,9 +93,10 @@ body{
 }
 .hub-link:hover{color:var(--text);border-color:var(--muted)}
 .theme-btn{
-  background:none;border:1px solid var(--border);border-radius:7px;
-  color:var(--muted);cursor:pointer;font-size:15px;
-  padding:5px 9px;line-height:1;transition:border-color .15s,color .15s;
+  appearance:none;background:var(--surface-2,rgba(0,0,0,.04));border:1px solid var(--border);
+  border-radius:8px;width:36px;height:36px;cursor:pointer;
+  display:grid;place-items:center;color:var(--muted);font-size:14px;
+  transition:background .15s,border-color .15s,color .15s;flex:0 0 auto;padding:0;
 }
 .theme-btn:hover{border-color:var(--brand-orange);color:var(--brand-orange)}
 
