@@ -6,6 +6,8 @@
 <title>Patel Dynamics</title>
 <meta name="description" content="Patel Dynamics — Interactive engineering tools for oil and gas professionals.">
 <meta name="theme-color" content="#0B1D2D">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUuNSIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjguNSIgZmlsbD0iI0YyOEMxOCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjQuMCIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2LjAiIGN5PSI0LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjI2LjAiIGN5PSIxMC4yIiByPSIxLjciIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSIyNi4wIiBjeT0iMjEuNyIgcj0iMS43IiBmaWxsPSIjZmZmZmZmIi8+PGNpcmNsZSBjeD0iMTYuMCIgY3k9IjI3LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjIxLjgiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjEwLjIiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUuNSIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjguNSIgZmlsbD0iI0YyOEMxOCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjQuMCIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2LjAiIGN5PSI0LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjI2LjAiIGN5PSIxMC4yIiByPSIxLjciIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSIyNi4wIiBjeT0iMjEuNyIgcj0iMS43IiBmaWxsPSIjZmZmZmZmIi8+PGNpcmNsZSBjeD0iMTYuMCIgY3k9IjI3LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjIxLjgiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjEwLjIiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=">
 <style>
 :root{
   --navy:#0B1D2D;--orange:#F28C18;
@@ -41,7 +43,6 @@ body{background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-ser
 .logo-img{width:38px;height:38px;display:block}
 .brand-text{display:flex;flex-direction:column;gap:2px}
 .brand-name{font-size:13.5px;font-weight:800;letter-spacing:.1em;color:var(--text);line-height:1}
-.brand-tagline{font-size:10px;color:var(--muted);letter-spacing:.04em;line-height:1}
 .theme-btn{appearance:none;background:var(--surface-2);border:1px solid var(--line);border-radius:7px;width:36px;height:36px;cursor:pointer;font-size:15px;color:var(--muted);display:grid;place-items:center;transition:background .15s,border-color .15s,color .15s;flex:0 0 auto}
 .theme-btn:hover{color:var(--text)}
 .theme-btn:focus-visible{outline:3px solid rgba(242,140,24,.35);outline-offset:2px}
@@ -79,7 +80,6 @@ footer a:hover{color:var(--text)}
   .hero-title{font-size:26px}
   .tools-section{padding:0 14px 56px}
   .header-inner{padding:10px 14px}
-  .brand-tagline{display:none}
 }
 </style>
 </head>
@@ -92,8 +92,7 @@ footer a:hover{color:var(--text)}
         <img class="logo-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUuNSIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjguNSIgZmlsbD0iI0YyOEMxOCIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjQuMCIgZmlsbD0iIzBCMUQyRCIvPgogIDxjaXJjbGUgY3g9IjE2LjAiIGN5PSI0LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjI2LjAiIGN5PSIxMC4yIiByPSIxLjciIGZpbGw9IiNmZmZmZmYiLz48Y2lyY2xlIGN4PSIyNi4wIiBjeT0iMjEuNyIgcj0iMS43IiBmaWxsPSIjZmZmZmZmIi8+PGNpcmNsZSBjeD0iMTYuMCIgY3k9IjI3LjUiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjIxLjgiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPjxjaXJjbGUgY3g9IjYuMCIgY3k9IjEwLjIiIHI9IjEuNyIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="Patel Dynamics logo">
       </span>
       <span class="brand-text">
-        <span class="brand-name">PATEL DYNAMICS</span>
-        <span class="brand-tagline">Engineering Tools</span>
+        <span class="brand-name">ANJAN PATEL</span>
       </span>
     </a>
     <button class="theme-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle light/dark">
