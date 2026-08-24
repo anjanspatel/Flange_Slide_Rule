@@ -1,6 +1,6 @@
 # Anjan Patel — Engineering Tools
 
-**Live → [tools.anjanpatel.ca](https://tools.anjanpatel.ca)**
+**Live → [tools.anjanpatel.ca](https://tools.anjanpatel.ca)** &nbsp;·&nbsp; **Repo → [github.com/anjanspatel/Tools](https://github.com/anjanspatel/Tools)**
 
 A personal hub of precision engineering reference tools built for field and office use. Each tool is a self-contained, single-page app — no login, no tracking, no install.
 
@@ -45,6 +45,7 @@ Safe working load for tubing blocks and safety blocks.
 ## Repo Structure
 
 ```
+anjanspatel/Tools
 /
 ├── index.html        ← Hub (landing page + tool cards)
 ├── CNAME             ← tools.anjanpatel.ca
