@@ -402,7 +402,7 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
       <span class="fdot">&middot;</span>
       <a href="https://www.linkedin.com/in/anjanspatel" target="_blank" rel="noopener">LinkedIn</a>
       <span class="fdot">&middot;</span>
-      <a href="mailto:anjan@anjanpatel.ca">Contact</a>
+      <a href="#" id="contactLink" onclick="return false;">Contact</a>
     </div>
   </div>
 </footer>
@@ -412,6 +412,7 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
 (function(){
   var root=document.documentElement,btn=document.getElementById('themeBtn'),icon=document.getElementById('themeIcon');
   document.getElementById('yr').textContent=new Date().getFullYear();
+  (function(){var c=document.getElementById('contactLink');if(c){var e='anjan'+'@'+'anjanpatel'+'.'+'ca';c.href='mailto:'+e;c.onclick=null;}})();
   function isDark(){var t=root.dataset.theme;return t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)}
   function apply(t){if(t){root.dataset.theme=t}else{delete root.dataset.theme}icon.textContent=isDark()?'☀':'☾'}
   function stored(){try{return localStorage.getItem('pd-theme')||''}catch(e){return''}}
