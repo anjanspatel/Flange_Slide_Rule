@@ -5,7 +5,7 @@
 <script>(function(){try{var t=localStorage.getItem('pd-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}}());</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Anjan Patel — Engineering Tools</title>
-<meta name="description" content="Precision engineering reference tools built for field and office use.">
+<meta name="description" content="Precision engineering reference tools for oil and gas — API 6A flange dimensions, ring gasket lookup, tubing block SWL calculations. Built for field and office use.">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tools.anjanpatel.ca/">
@@ -177,6 +177,9 @@ body{
   animation:shimmer-sweep 3.5s linear infinite;
 }
 .hero-sub{display:none}
+.share-btn{display:inline-flex;align-items:center;gap:7px;margin-top:20px;background:none;border:1px solid var(--line);border-radius:8px;color:var(--muted);cursor:pointer;font-family:'IBM Plex Sans',Arial,sans-serif;font-size:12px;font-weight:500;padding:7px 14px;letter-spacing:.02em;transition:border-color .15s,color .15s}
+.share-btn:hover{border-color:var(--brand-orange);color:var(--brand-orange)}
+.share-btn.copied{border-color:var(--brand-orange);color:var(--brand-orange)}
 
 /* ═══ TOOLS SECTION ═════════════════════════════════════════════════════ */
 .tools-section{max-width:1100px;margin:0 auto;padding:0 28px 88px}
@@ -315,6 +318,10 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
     <!-- 4. Text generate target -->
     <h1 class="hero-title" id="heroTitle">Engineering<br><span class="hero-orange">Tools</span></h1>
     <p class="hero-sub">Precision reference tools built for field and office use.</p>
+    <button class="share-btn" id="shareBtn" aria-label="Copy link to this page">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span id="shareBtnLabel">Share</span>
+    </button>
   </div>
 
   <div class="tools-section">
@@ -381,6 +388,63 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
         </div>
       </a>
 
+      <a class="tool-card" href="/reference/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="3" width="18" height="20" rx="2" stroke="#F28C18" stroke-width="1.6"/>
+              <line x1="8" y1="9"  x2="18" y2="9"  stroke="#F28C18" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="8" y1="13" x2="18" y2="13" stroke="#F28C18" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="8" y1="17" x2="14" y2="17" stroke="#F28C18" stroke-width="1.3" stroke-linecap="round"/>
+              <circle cx="18" cy="18" r="4.5" fill="none" stroke="#F28C18" stroke-width="1.4"/>
+              <line x1="20.5" y1="20.5" x2="23" y2="23" stroke="#F28C18" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="card-badge">Reference</span>
+        </div>
+        <div class="card-title">API 6A Dimension Tables</div>
+        <div class="card-desc">Complete static reference for API&nbsp;6A / ISO&nbsp;10423 flange dimensions — 3K through 15K, all 10 nominal bores, R-type and BX-type ring gasket data. Indexed and printable.</div>
+        <div class="card-tags">
+          <span class="card-tag">API 6A</span>
+          <span class="card-tag">Dim. Tables</span>
+          <span class="card-tag">Ring Gaskets</span>
+          <span class="card-tag">Printable</span>
+        </div>
+        <div class="card-cta">
+          View Tables
+          <svg class="cta-arrow" viewBox="0 0 14 14" aria-hidden="true"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="7,2 12,7 7,12"/></svg>
+        </div>
+      </a>
+
+      <a class="tool-card" href="/ringgasket/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="13" cy="13" r="9.5" stroke="#F28C18" stroke-width="1.6"/>
+              <circle cx="13" cy="13" r="5.2" stroke="#F28C18" stroke-width="1.4" stroke-dasharray="2.5 2"/>
+              <circle cx="13" cy="13" r="2"   fill="#F28C18" opacity=".6"/>
+              <line x1="13" y1="2.5"  x2="13" y2="4.5"  stroke="#F28C18" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="13" y1="21.5" x2="13" y2="23.5" stroke="#F28C18" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="2.5"  y1="13" x2="4.5"  y2="13" stroke="#F28C18" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="21.5" y1="13" x2="23.5" y2="13" stroke="#F28C18" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="card-badge">Live</span>
+        </div>
+        <div class="card-title">Ring Gasket Lookup</div>
+        <div class="card-desc">Interactive R-type and BX-type ring gasket reference — pitch diameter, groove width, groove depth, and flange cross-reference. Find the right ring for any API&nbsp;6A connection.</div>
+        <div class="card-tags">
+          <span class="card-tag">R-type</span>
+          <span class="card-tag">BX-type</span>
+          <span class="card-tag">Groove Dims</span>
+          <span class="card-tag">Cross-Ref</span>
+        </div>
+        <div class="card-cta">
+          Launch Tool
+          <svg class="cta-arrow" viewBox="0 0 14 14" aria-hidden="true"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="7,2 12,7 7,12"/></svg>
+        </div>
+      </a>
+
     </div>
   </div>
 </main>
@@ -412,6 +476,22 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   apply(stored());
   btn.addEventListener('click',function(){var n=isDark()?'light':'dark';store(n);apply(n)});
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){if(!stored())apply('')});
+  /* Share button */
+  (function(){
+    var sb=document.getElementById('shareBtn'),lbl=document.getElementById('shareBtnLabel');
+    if(!sb)return;
+    sb.addEventListener('click',function(){
+      var url=window.location.href;
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(url).then(function(){
+          lbl.textContent='Copied!';sb.classList.add('copied');
+          setTimeout(function(){lbl.textContent='Share';sb.classList.remove('copied')},2000);
+        });
+      } else if(navigator.share){
+        navigator.share({title:document.title,url:url});
+      }
+    });
+  })();
 })();
 
 /* ── 5. Floating Navbar ── */
@@ -581,6 +661,24 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   });
 })();
 </script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var sw=reg.installing;
+      sw.addEventListener('statechange',function(){
+        if(sw.state==='installed'&&navigator.serviceWorker.controller){
+          var b=document.getElementById('sw-update-banner');if(b)b.style.display='flex';
+        }
+      });
+    });
+  }).catch(function(){});
+  navigator.serviceWorker.addEventListener('controllerchange',function(){window.location.reload()});
+}
+</script>
+<div id="sw-update-banner" aria-live="polite" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0B1D2D;color:#EDF2F8;border:1px solid rgba(242,140,24,.45);border-radius:10px;padding:11px 16px;font-size:12.5px;font-family:'IBM Plex Sans',Arial,sans-serif;gap:12px;align-items:center;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap">
+  <span>Update available</span>
+  <button onclick="window.location.reload()" style="background:#F28C18;color:#fff;border:none;border-radius:6px;padding:5px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Refresh</button>
+</div>
 </body>
 </html>

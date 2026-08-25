@@ -1,10 +1,11 @@
-const CACHE = 'ap-tools-v2';
+const CACHE = 'ap-tools-v3';
 
 const PRECACHE = [
   '/',
   '/flange/',
   '/tubing/',
   '/reference/',
+  '/ringgasket/',
   '/terms/',
   '/favicon.svg',
   '/manifest.json',

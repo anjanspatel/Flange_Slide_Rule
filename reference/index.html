@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://tools.anjanpatel.ca/reference/">
 <meta property="og:title" content="API 6A Flange Dimensions — Complete Reference Tables">
 <meta property="og:description" content="API 6A / ISO 10423 flange dimensional reference — 3K through 15K, 10 nominal sizes, ring gasket data.">
-<meta property="og:image" content="https://tools.anjanpatel.ca/og.png">
+<meta property="og:image" content="https://tools.anjanpatel.ca/reference/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tools.anjanpatel.ca/og.png">
+<meta name="twitter:image" content="https://tools.anjanpatel.ca/reference/og.png">
 <meta name="theme-color" content="#0B1D2D">
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
@@ -150,6 +150,30 @@ footer a:hover{color:var(--text)}
   .header-inner{padding:0 16px;height:58px}
   .ring-cols{grid-template-columns:1fr}
   .back-link span{display:none}
+}
+
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;color:#000;font-size:10pt}
+  .site-header,.cta-btn,footer,.warn-box a{display:none!important}
+  .content{padding:0;max-width:100%}
+  h1{font-size:16pt;margin-bottom:6pt}
+  h2{font-size:11pt;page-break-after:avoid}
+  .section{page-break-inside:avoid;margin-bottom:24pt}
+  .ring-cols{display:grid;grid-template-columns:1fr 1fr;gap:16pt}
+  table{font-size:8pt;min-width:0}
+  th{background:#f0f0f0!important;color:#000!important}
+  tr:nth-child(even) td{background:#fafafa!important}
+  td.ring{color:#c06000!important}
+  td.bx{color:#555!important}
+  .tbl-wrap{border:1px solid #ccc;border-radius:0;overflow:visible}
+  .warn-box{background:#fff8e6!important;border-color:#f0a000!important}
+  .page-eyebrow,.chip-row{display:none}
+  .unit-note{font-size:7pt;color:#666}
+  .section-sub{font-size:7.5pt}
+  a[href]::after{content:" ("attr(href)")";font-size:7pt;color:#666}
+  .cta-btn a::after{content:none}
+  h2::after{display:none}
 }
 </style>
 </head>
@@ -466,6 +490,24 @@ footer a:hover{color:var(--text)}
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var sw=reg.installing;
+      sw.addEventListener('statechange',function(){
+        if(sw.state==='installed'&&navigator.serviceWorker.controller){
+          var b=document.getElementById('sw-update-banner');if(b)b.style.display='flex';
+        }
+      });
+    });
+  }).catch(function(){});
+  navigator.serviceWorker.addEventListener('controllerchange',function(){window.location.reload()});
+}
+</script>
+<div id="sw-update-banner" aria-live="polite" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0B1D2D;color:#EDF2F8;border:1px solid rgba(242,140,24,.45);border-radius:10px;padding:11px 16px;font-size:12.5px;font-family:'IBM Plex Sans',Arial,sans-serif;gap:12px;align-items:center;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap">
+  <span>Update available</span>
+  <button onclick="window.location.reload()" style="background:#F28C18;color:#fff;border:none;border-radius:6px;padding:5px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Refresh</button>
+</div>
 </body>
 </html>

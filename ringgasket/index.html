@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('pd-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}}());</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ring Gasket Lookup — API 6A / ISO 10423 | Anjan Patel</title>
+<meta name="description" content="Interactive ring gasket lookup for API 6A / ISO 10423 wellhead flanges. Find R-type and BX-type ring dimensions, groove specs, and matching flange connections by pressure class and bore size.">
+<link rel="canonical" href="https://tools.anjanpatel.ca/ringgasket/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tools.anjanpatel.ca/ringgasket/">
+<meta property="og:title" content="Ring Gasket Lookup — API 6A / ISO 10423">
+<meta property="og:description" content="R-type and BX-type ring gasket dimensions and flange cross-reference for API 6A wellhead connections.">
+<meta property="og:image" content="https://tools.anjanpatel.ca/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tools.anjanpatel.ca/og.png">
+<meta name="theme-color" content="#0B1D2D">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#0B1D2D; --orange:#F28C18;
+  --bg:#EFF3FA; --surface:#FFFFFF; --surface-2:#F5F8FD;
+  --text:#0B1D2D; --text-2:#2D3E52; --muted:#5E728A;
+  --line:#D3DCE9; --header-bg:rgba(255,255,255,.92);
+  --logo-border:rgba(11,29,45,.10);
+  --logo-shadow:0 1px 4px rgba(11,29,45,.10),0 2px 8px rgba(11,29,45,.06);
+  --tbl-head:#F1F5FB; --tbl-alt:#F9FAFC; --tbl-border:#D3DCE9;
+  --chip-bg:rgba(11,29,45,.06); --chip-border:rgba(11,29,45,.12);
+  --selected-bg:rgba(242,140,24,.10); --selected-border:rgba(242,140,24,.45);
+  --detail-bg:#FFFFFF; --detail-border:#D3DCE9;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#04080F; --surface:#091522; --surface-2:#0B1928;
+  --text:#EDF2F8; --text-2:#B8CBDC; --muted:#7A96B0;
+  --line:#122030; --header-bg:rgba(6,16,28,.90);
+  --logo-border:rgba(242,140,24,.18);
+  --logo-shadow:0 0 0 1px rgba(242,140,24,.08),0 4px 14px rgba(0,0,0,.35);
+  --tbl-head:#0C1E30; --tbl-alt:#080F18; --tbl-border:#122030;
+  --chip-bg:rgba(255,255,255,.05); --chip-border:rgba(255,255,255,.1);
+  --selected-bg:rgba(242,140,24,.12); --selected-border:rgba(242,140,24,.5);
+  --detail-bg:#091522; --detail-border:#1A3349;
+}}
+:root[data-theme="dark"]{
+  --bg:#04080F; --surface:#091522; --surface-2:#0B1928;
+  --text:#EDF2F8; --text-2:#B8CBDC; --muted:#7A96B0;
+  --line:#122030; --header-bg:rgba(6,16,28,.90);
+  --logo-border:rgba(242,140,24,.18);
+  --logo-shadow:0 0 0 1px rgba(242,140,24,.08),0 4px 14px rgba(0,0,0,.35);
+  --tbl-head:#0C1E30; --tbl-alt:#080F18; --tbl-border:#122030;
+  --chip-bg:rgba(255,255,255,.05); --chip-border:rgba(255,255,255,.1);
+  --selected-bg:rgba(242,140,24,.12); --selected-border:rgba(242,140,24,.5);
+  --detail-bg:#091522; --detail-border:#1A3349;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:'IBM Plex Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);transition:background .22s,color .22s}
+
+/* Header */
+.site-header{background:var(--header-bg);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.logo-wrap{width:40px;height:40px;border-radius:10px;background:#0B1D2D;border:1px solid var(--logo-border);box-shadow:var(--logo-shadow);display:grid;place-items:center;flex:0 0 auto}
+.brand-name{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.header-right{display:flex;align-items:center;gap:8px}
+.back-link{font-size:12px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;font-weight:500;padding:6px 10px;border-radius:7px;border:1px solid var(--line);transition:border-color .15s,color .15s}
+.back-link:hover{border-color:var(--orange);color:var(--orange);text-decoration:none}
+.theme-btn{background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;font-size:15px;padding:6px 10px;line-height:1;transition:border-color .15s,color .15s}
+.theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+
+/* Page */
+.content{max-width:1200px;margin:0 auto;padding:36px 28px 80px}
+.page-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow-line{display:block;width:24px;height:2px;background:var(--orange)}
+h1{font-size:clamp(24px,2.8vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px;text-wrap:balance}
+.page-sub{font-size:15px;color:var(--muted);line-height:1.65;max-width:640px;margin-bottom:28px}
+
+/* Mode tabs */
+.mode-tabs{display:flex;gap:0;margin-bottom:28px;border:1px solid var(--line);border-radius:10px;overflow:hidden;width:fit-content}
+.mode-tab{padding:9px 20px;font-size:12.5px;font-weight:600;cursor:pointer;background:none;border:none;color:var(--muted);transition:background .15s,color .15s;font-family:inherit;letter-spacing:.01em}
+.mode-tab.active{background:var(--orange);color:#fff}
+.mode-tab:not(.active):hover{background:var(--surface-2);color:var(--text)}
+
+/* Layout */
+.tool-layout{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+@media(max-width:900px){.tool-layout{grid-template-columns:1fr}}
+
+/* Ring type tabs */
+.type-tabs{display:flex;gap:8px;margin-bottom:16px}
+.type-tab{padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:7px;color:var(--muted);transition:all .15s;font-family:inherit}
+.type-tab.active{background:var(--orange);border-color:var(--orange);color:#fff}
+
+/* Ring table */
+.ring-table-wrap{border:1px solid var(--tbl-border);border-radius:10px;overflow:hidden}
+table{border-collapse:collapse;width:100%;font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-variant-numeric:tabular-nums}
+thead tr{background:var(--tbl-head)}
+th{padding:9px 12px;text-align:left;font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--tbl-border);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--tbl-border);color:var(--text);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even) td{background:var(--tbl-alt)}
+tbody tr.selected td{background:var(--selected-bg)!important;border-top:1px solid var(--selected-border);border-bottom:1px solid var(--selected-border)}
+tbody tr.selected + tr td{border-top:none}
+tbody tr{cursor:pointer;transition:background .1s}
+tbody tr:not(.selected):hover td{background:rgba(242,140,24,.05)!important}
+td.ring-no{font-weight:700;color:var(--orange)}
+td.ring-no.bx{color:#9ca3af}
+tbody tr.selected td.ring-no{color:var(--orange)}
+tbody tr.selected td.ring-no.bx{color:#F28C18}
+
+/* Detail panel */
+.detail-panel{background:var(--detail-bg);border:1px solid var(--detail-border);border-radius:12px;padding:24px;position:sticky;top:80px}
+.detail-empty{text-align:center;padding:40px 0;color:var(--muted);font-size:13px}
+.detail-empty svg{display:block;margin:0 auto 12px;opacity:.3}
+.detail-ring-no{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:500;color:var(--orange);margin-bottom:4px}
+.detail-ring-no.bx{color:#F28C18}
+.detail-type{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-family:'IBM Plex Mono',monospace}
+.detail-dims{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.dim-card{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.dim-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:'IBM Plex Mono',monospace}
+.dim-value{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+.dim-unit{font-size:11px;color:var(--muted);margin-left:2px}
+.detail-flanges{margin-top:0}
+.detail-flanges-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-family:'IBM Plex Mono',monospace;display:flex;align-items:center;gap:8px}
+.detail-flanges-label::after{content:'';flex:1;height:1px;background:var(--line)}
+.flange-pills{display:flex;flex-direction:column;gap:7px}
+.flange-pill{background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.flange-pill .bore{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--text)}
+.flange-pill .psi{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;background:rgba(242,140,24,.12);color:var(--orange);padding:2px 7px;border-radius:4px;border:1px solid rgba(242,140,24,.25)}
+.no-flanges{font-size:12px;color:var(--muted);font-style:italic}
+
+/* Flange finder mode */
+.finder-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:600px){.finder-grid{grid-template-columns:1fr}}
+.finder-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.finder-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-family:'IBM Plex Mono',monospace}
+.finder-opts{display:flex;flex-direction:column;gap:6px}
+.finder-opt{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;cursor:pointer;border:1px solid var(--line);background:none;font-family:inherit;font-size:13px;color:var(--text);font-weight:500;transition:all .15s;text-align:left;width:100%}
+.finder-opt:hover{border-color:var(--orange);background:rgba(242,140,24,.05)}
+.finder-opt.active{border-color:var(--orange);background:var(--selected-bg);color:var(--text)}
+.finder-opt .check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex:0 0 auto;display:grid;place-items:center;transition:all .15s}
+.finder-opt.active .check{background:var(--orange);border-color:var(--orange)}
+.finder-opt.active .check::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
+.finder-result{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+.result-empty{color:var(--muted);font-size:13px;text-align:center;padding:20px 0}
+.result-ring{font-family:'IBM Plex Mono',monospace;font-size:36px;font-weight:500;color:var(--orange);margin-bottom:6px}
+.result-dims-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.result-dim{text-align:center;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px 16px;min-width:90px}
+.result-dim-val{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:var(--text)}
+.result-dim-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace}
+.result-note{font-size:11.5px;color:var(--muted);line-height:1.6;padding:10px 14px;background:rgba(242,140,24,.06);border:1px solid rgba(242,140,24,.18);border-radius:8px}
+
+.unit-note{font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:8px;letter-spacing:.03em}
+.warn-box{background:rgba(242,140,24,.07);border:1px solid rgba(242,140,24,.25);border-radius:10px;padding:12px 16px;font-size:12px;line-height:1.65;color:var(--text);margin-top:24px}
+.warn-box strong{color:var(--orange)}
+.warn-box a{color:var(--orange)}
+
+footer{border-top:1px solid var(--line);padding:20px 28px;text-align:center;font-size:11px;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+
+@media(max-width:700px){
+  .content{padding:24px 16px 60px}
+  .header-inner{padding:0 16px;height:58px}
+  .back-link span{display:none}
+  .detail-dims{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Anjan Patel Engineering Tools — home">
+      <span class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" aria-hidden="true">
+          <text x="50" y="50" font-family="'IBM Plex Sans',system-ui,-apple-system,sans-serif" font-weight="700" font-size="50"
+                text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" letter-spacing="-4">AP</text>
+        </svg>
+      </span>
+      <span class="brand-name">Anjan Patel</span>
+    </a>
+    <div class="header-right">
+      <a class="back-link" href="/">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>All Tools</span>
+      </a>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme"><span id="themeIcon" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+  <p class="page-eyebrow"><span class="eyebrow-line"></span>API 6A · ISO 10423 · Ring Gaskets</p>
+  <h1>Ring Gasket Lookup</h1>
+  <p class="page-sub">Select a ring number to see groove dimensions and which API&nbsp;6A flange connections use it — or use Flange&nbsp;Finder to go from pressure class and bore size to ring gasket.</p>
+
+  <!-- Mode switch -->
+  <div class="mode-tabs" role="tablist" aria-label="Lookup mode">
+    <button class="mode-tab active" id="tab-ring" role="tab" aria-selected="true" aria-controls="panel-ring">Ring Lookup</button>
+    <button class="mode-tab" id="tab-finder" role="tab" aria-selected="false" aria-controls="panel-finder">Flange Finder</button>
+  </div>
+
+  <!-- ── RING LOOKUP PANEL ── -->
+  <div id="panel-ring" role="tabpanel" aria-labelledby="tab-ring">
+    <div class="type-tabs" role="group" aria-label="Ring type">
+      <button class="type-tab active" id="btn-r" data-type="R">R-type  ·  3K &amp; 5K</button>
+      <button class="type-tab" id="btn-bx" data-type="BX">BX-type  ·  10K &amp; 15K</button>
+    </div>
+    <div class="tool-layout">
+      <div>
+        <div class="ring-table-wrap">
+          <table id="ringTable">
+            <thead>
+              <tr>
+                <th>Ring No.</th>
+                <th>Pitch Dia. (in)</th>
+                <th>Width (in)</th>
+                <th>Depth (in)</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="ringTableBody"></tbody>
+          </table>
+        </div>
+        <p class="unit-note">Tap a row to see groove dimensions and matching flanges.</p>
+        <div class="warn-box">
+          <strong>Reference only.</strong> Verify all dimensions against the current, licensed edition of API Spec 6A (ISO 10423) before engineering use. See <a href="/terms/">Terms &amp; Disclaimer</a>.
+        </div>
+      </div>
+      <div id="ringDetail" class="detail-panel">
+        <div class="detail-empty" id="detailEmpty">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Select a ring to view dimensions
+        </div>
+        <div id="detailContent" style="display:none">
+          <div class="detail-ring-no" id="dRingNo"></div>
+          <div class="detail-type" id="dType"></div>
+          <div class="detail-dims">
+            <div class="dim-card">
+              <div class="dim-label">Pitch Dia.</div>
+              <div class="dim-value"><span id="dPitch"></span><span class="dim-unit">in</span></div>
+            </div>
+            <div class="dim-card">
+              <div class="dim-label">Groove Width</div>
+              <div class="dim-value"><span id="dWidth"></span><span class="dim-unit">in</span></div>
+            </div>
+            <div class="dim-card" style="grid-column:span 2">
+              <div class="dim-label">Groove Depth</div>
+              <div class="dim-value"><span id="dDepth"></span><span class="dim-unit">in</span></div>
+            </div>
+          </div>
+          <div class="detail-flanges">
+            <div class="detail-flanges-label">Used by</div>
+            <div class="flange-pills" id="dFlanges"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FLANGE FINDER PANEL ── -->
+  <div id="panel-finder" role="tabpanel" aria-labelledby="tab-finder" style="display:none">
+    <div class="finder-grid">
+      <div class="finder-card">
+        <div class="finder-label">Pressure Class</div>
+        <div class="finder-opts" id="finderPsi">
+          <button class="finder-opt" data-psi="3000"><span class="check"></span>3,000 psi (API 6B)</button>
+          <button class="finder-opt" data-psi="5000"><span class="check"></span>5,000 psi (API 6B)</button>
+          <button class="finder-opt" data-psi="10000"><span class="check"></span>10,000 psi (API 6BX)</button>
+          <button class="finder-opt" data-psi="15000"><span class="check"></span>15,000 psi (API 6BX)</button>
+        </div>
+      </div>
+      <div class="finder-card">
+        <div class="finder-label">Nominal Bore</div>
+        <div class="finder-opts" id="finderBore">
+          <button class="finder-opt" data-bore="2-1/16"><span class="check"></span>2&#x2011;1/16&Prime;</button>
+          <button class="finder-opt" data-bore="2-9/16"><span class="check"></span>2&#x2011;9/16&Prime;</button>
+          <button class="finder-opt" data-bore="3-1/8"><span class="check"></span>3&#x2011;1/8&Prime;</button>
+          <button class="finder-opt" data-bore="4-1/16"><span class="check"></span>4&#x2011;1/16&Prime;</button>
+          <button class="finder-opt" data-bore="5-1/8"><span class="check"></span>5&#x2011;1/8&Prime;</button>
+          <button class="finder-opt" data-bore="7-1/16"><span class="check"></span>7&#x2011;1/16&Prime;</button>
+          <button class="finder-opt" data-bore="9"><span class="check"></span>9&Prime;</button>
+          <button class="finder-opt" data-bore="11"><span class="check"></span>11&Prime;</button>
+          <button class="finder-opt" data-bore="13-5/8"><span class="check"></span>13&#x2011;5/8&Prime;</button>
+          <button class="finder-opt" data-bore="16-3/4"><span class="check"></span>16&#x2011;3/4&Prime;</button>
+        </div>
+      </div>
+    </div>
+    <div class="finder-result" id="finderResult">
+      <div class="result-empty" id="finderEmpty">Select pressure class and bore size</div>
+      <div id="finderContent" style="display:none">
+        <div style="font-size:11px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px" id="fResultLabel"></div>
+        <div class="result-ring" id="fRing"></div>
+        <div class="result-dims-row" id="fDims"></div>
+        <div class="result-note" id="fNote"></div>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:16px">
+      <strong>Reference only.</strong> Verify against the current, licensed edition of API Spec 6A (ISO 10423) before engineering use. See <a href="/terms/">Terms &amp; Disclaimer</a>.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>&copy; <span id="yr"></span> Anjan Patel. All rights reserved.</span>
+  &nbsp;&middot;&nbsp;
+  <a href="/">Home</a>
+  &nbsp;&middot;&nbsp;
+  <a href="/flange/">Flange Slide Rule</a>
+  &nbsp;&middot;&nbsp;
+  <a href="/reference/">Dimension Tables</a>
+  &nbsp;&middot;&nbsp;
+  <a href="/terms/">Terms &amp; Disclaimer</a>
+</footer>
+
+<script>
+(function(){
+
+/* ── Data ── */
+var RINGS = {
+  R: [
+    {no:'R-24',  pitch:3.750, width:0.438, depth:0.312},
+    {no:'R-27',  pitch:4.250, width:0.438, depth:0.312},
+    {no:'R-31',  pitch:4.844, width:0.438, depth:0.312},
+    {no:'R-35',  pitch:5.375, width:0.469, depth:0.344},
+    {no:'R-37',  pitch:5.875, width:0.469, depth:0.344},
+    {no:'R-39',  pitch:6.375, width:0.500, depth:0.375},
+    {no:'R-41',  pitch:7.125, width:0.500, depth:0.375},
+    {no:'R-44',  pitch:7.625, width:0.531, depth:0.406},
+    {no:'R-45',  pitch:8.313, width:0.531, depth:0.406},
+    {no:'R-46',  pitch:8.313, width:0.562, depth:0.422},
+    {no:'R-49',  pitch:10.625,width:0.594, depth:0.453},
+    {no:'R-50',  pitch:10.625,width:0.625, depth:0.469},
+    {no:'R-53',  pitch:12.750,width:0.656, depth:0.500},
+    {no:'R-54',  pitch:12.750,width:0.688, depth:0.531},
+    {no:'R-57',  pitch:15.188,width:0.719, depth:0.547},
+    {no:'R-58',  pitch:15.188,width:0.750, depth:0.562},
+    {no:'R-65',  pitch:18.500,width:0.813, depth:0.625},
+    {no:'R-66',  pitch:18.500,width:0.844, depth:0.641},
+  ],
+  BX: [
+    {no:'BX-150',pitch:3.594, width:0.469, depth:0.406},
+    {no:'BX-151',pitch:4.094, width:0.469, depth:0.406},
+    {no:'BX-152',pitch:5.000, width:0.500, depth:0.438},
+    {no:'BX-153',pitch:6.375, width:0.531, depth:0.469},
+    {no:'BX-154',pitch:7.938, width:0.594, depth:0.531},
+    {no:'BX-155',pitch:10.688,width:0.656, depth:0.594},
+    {no:'BX-156',pitch:13.063,width:0.719, depth:0.656},
+    {no:'BX-157',pitch:15.563,width:0.781, depth:0.719},
+  ]
+};
+
+/* ring → [{bore, psi}] */
+var FLANGE_MAP = {
+  'R-24': [{bore:'2‑1/16',psi:'3,000'},{bore:'2‑1/16',psi:'5,000'}],
+  'R-27': [{bore:'2‑9/16',psi:'3,000'},{bore:'2‑9/16',psi:'5,000'}],
+  'R-31': [{bore:'3‑1/8', psi:'3,000'}],
+  'R-35': [{bore:'3‑1/8', psi:'5,000'}],
+  'R-37': [{bore:'4‑1/16',psi:'3,000'}],
+  'R-39': [{bore:'4‑1/16',psi:'5,000'}],
+  'R-41': [{bore:'5‑1/8', psi:'3,000'}],
+  'R-44': [{bore:'5‑1/8', psi:'5,000'}],
+  'R-45': [{bore:'7‑1/16',psi:'3,000'}],
+  'R-46': [{bore:'7‑1/16',psi:'5,000'}],
+  'R-49': [{bore:'9',          psi:'3,000'}],
+  'R-50': [{bore:'9',          psi:'5,000'}],
+  'R-53': [{bore:'11',         psi:'3,000'}],
+  'R-54': [{bore:'11',         psi:'5,000'}],
+  'R-57': [{bore:'13‑5/8',psi:'3,000'}],
+  'R-58': [{bore:'13‑5/8',psi:'5,000'}],
+  'R-65': [{bore:'16‑3/4',psi:'3,000'}],
+  'R-66': [{bore:'16‑3/4',psi:'5,000'}],
+  'BX-150':[{bore:'2‑1/16',psi:'10,000'},{bore:'2‑1/16',psi:'15,000'}],
+  'BX-151':[{bore:'2‑9/16',psi:'10,000'},{bore:'2‑9/16',psi:'15,000'}],
+  'BX-152':[{bore:'3‑1/8', psi:'10,000'},{bore:'3‑1/8', psi:'15,000'}],
+  'BX-153':[{bore:'4‑1/16',psi:'10,000'},{bore:'4‑1/16',psi:'15,000'}],
+  'BX-154':[{bore:'5‑1/8', psi:'10,000'},{bore:'5‑1/8', psi:'15,000'}],
+  'BX-155':[{bore:'7‑1/16',psi:'10,000'},{bore:'7‑1/16',psi:'15,000'}],
+  'BX-156':[{bore:'9',          psi:'10,000'},{bore:'9',          psi:'15,000'}],
+  'BX-157':[{bore:'11',         psi:'10,000'},{bore:'11',         psi:'15,000'}],
+};
+
+/* psi+bore → ring no. */
+var FLANGE_TO_RING = {
+  '3000|2-1/16':'R-24','3000|2-9/16':'R-27','3000|3-1/8':'R-31','3000|4-1/16':'R-37',
+  '3000|5-1/8':'R-41', '3000|7-1/16':'R-45','3000|9':'R-49','3000|11':'R-53',
+  '3000|13-5/8':'R-57','3000|16-3/4':'R-65',
+  '5000|2-1/16':'R-24','5000|2-9/16':'R-27','5000|3-1/8':'R-35','5000|4-1/16':'R-39',
+  '5000|5-1/8':'R-44', '5000|7-1/16':'R-46','5000|9':'R-50','5000|11':'R-54',
+  '5000|13-5/8':'R-58','5000|16-3/4':'R-66',
+  '10000|2-1/16':'BX-150','10000|2-9/16':'BX-151','10000|3-1/8':'BX-152','10000|4-1/16':'BX-153',
+  '10000|5-1/8':'BX-154','10000|7-1/16':'BX-155','10000|9':'BX-156','10000|11':'BX-157',
+  '15000|2-1/16':'BX-150','15000|2-9/16':'BX-151','15000|3-1/8':'BX-152','15000|4-1/16':'BX-153',
+  '15000|5-1/8':'BX-154','15000|7-1/16':'BX-155','15000|9':'BX-156','15000|11':'BX-157',
+};
+
+/* notes for BX vs R */
+var RING_NOTES = {
+  R: 'R-type rings are oval or octagonal cross-section. RX-type rings share the same ring number and are interchangeable in the same groove. Use in API 6B flanges (3,000 – 5,000 psi).',
+  BX: 'BX-type rings are pressure-energized and require a BX groove profile. Not interchangeable with R or RX rings. Use in API 6BX flanges (10,000 – 15,000 psi).',
+};
+
+/* ── State ── */
+var currentType = 'R';
+var selectedRing = null;
+var finderPsi = null;
+var finderBore = null;
+
+/* ── Helpers ── */
+function fmt(n){return n.toFixed(3)}
+function isBX(no){return no.indexOf('BX')===0}
+
+/* ── Ring table ── */
+function renderTable(){
+  var tbody = document.getElementById('ringTableBody');
+  tbody.innerHTML = '';
+  RINGS[currentType].forEach(function(r){
+    var tr = document.createElement('tr');
+    if(selectedRing===r.no) tr.classList.add('selected');
+    var bx = isBX(r.no);
+    var typeLabel = bx ? 'BX · Pressure-energized' : 'R · Octagonal / Oval';
+    tr.innerHTML = '<td class="ring-no'+(bx?' bx':'')+'">'+r.no+'</td>'
+      +'<td>'+fmt(r.pitch)+'</td>'
+      +'<td>'+fmt(r.width)+'</td>'
+      +'<td>'+fmt(r.depth)+'</td>'
+      +'<td style="font-size:10.5px;color:var(--muted)">'+typeLabel+'</td>';
+    tr.addEventListener('click', function(){selectRing(r.no)});
+    tbody.appendChild(tr);
+  });
+}
+
+function selectRing(no){
+  selectedRing = no;
+  renderTable();
+  renderDetail(no);
+}
+
+function renderDetail(no){
+  var ring = null;
+  ['R','BX'].forEach(function(t){
+    RINGS[t].forEach(function(r){if(r.no===no) ring=r});
+  });
+  if(!ring) return;
+  var bx = isBX(no);
+  document.getElementById('detailEmpty').style.display = 'none';
+  document.getElementById('detailContent').style.display = '';
+  var rnoEl = document.getElementById('dRingNo');
+  rnoEl.textContent = no;
+  rnoEl.className = 'detail-ring-no' + (bx?' bx':'');
+  document.getElementById('dType').textContent = bx
+    ? 'BX-Type · Pressure-Energized · API 6BX'
+    : 'R-Type · Octagonal or Oval · API 6B';
+  document.getElementById('dPitch').textContent = fmt(ring.pitch);
+  document.getElementById('dWidth').textContent = fmt(ring.width);
+  document.getElementById('dDepth').textContent = fmt(ring.depth);
+  var flanges = FLANGE_MAP[no] || [];
+  var fp = document.getElementById('dFlanges');
+  fp.innerHTML = '';
+  if(flanges.length === 0){
+    fp.innerHTML = '<p class="no-flanges">No flange data for this ring.</p>';
+  } else {
+    flanges.forEach(function(f){
+      var pill = document.createElement('div');
+      pill.className = 'flange-pill';
+      pill.innerHTML = '<span class="bore">'+f.bore+'" bore</span><span class="psi">'+f.psi+' psi</span>';
+      fp.appendChild(pill);
+    });
+  }
+}
+
+/* ── Type tabs ── */
+document.getElementById('btn-r').addEventListener('click',function(){
+  currentType='R'; selectedRing=null;
+  document.getElementById('btn-r').classList.add('active');
+  document.getElementById('btn-bx').classList.remove('active');
+  renderTable();
+  document.getElementById('detailEmpty').style.display='';
+  document.getElementById('detailContent').style.display='none';
+});
+document.getElementById('btn-bx').addEventListener('click',function(){
+  currentType='BX'; selectedRing=null;
+  document.getElementById('btn-bx').classList.add('active');
+  document.getElementById('btn-r').classList.remove('active');
+  renderTable();
+  document.getElementById('detailEmpty').style.display='';
+  document.getElementById('detailContent').style.display='none';
+});
+
+/* ── Mode tabs ── */
+document.getElementById('tab-ring').addEventListener('click',function(){
+  document.getElementById('tab-ring').classList.add('active');
+  document.getElementById('tab-finder').classList.remove('active');
+  document.getElementById('tab-ring').setAttribute('aria-selected','true');
+  document.getElementById('tab-finder').setAttribute('aria-selected','false');
+  document.getElementById('panel-ring').style.display='';
+  document.getElementById('panel-finder').style.display='none';
+});
+document.getElementById('tab-finder').addEventListener('click',function(){
+  document.getElementById('tab-finder').classList.add('active');
+  document.getElementById('tab-ring').classList.remove('active');
+  document.getElementById('tab-finder').setAttribute('aria-selected','true');
+  document.getElementById('tab-ring').setAttribute('aria-selected','false');
+  document.getElementById('panel-finder').style.display='';
+  document.getElementById('panel-ring').style.display='none';
+});
+
+/* ── Flange Finder ── */
+function setFinderOpt(group, attr, val, activeEl){
+  document.querySelectorAll('#'+group+' .finder-opt').forEach(function(b){b.classList.remove('active')});
+  activeEl.classList.add('active');
+  if(attr==='psi') finderPsi = val;
+  else finderBore = val;
+  updateFinderResult();
+}
+document.querySelectorAll('#finderPsi .finder-opt').forEach(function(b){
+  b.addEventListener('click',function(){setFinderOpt('finderPsi','psi',b.dataset.psi,b)});
+});
+document.querySelectorAll('#finderBore .finder-opt').forEach(function(b){
+  b.addEventListener('click',function(){setFinderOpt('finderBore','bore',b.dataset.bore,b)});
+});
+
+function updateFinderResult(){
+  var empty = document.getElementById('finderEmpty');
+  var content = document.getElementById('finderContent');
+  if(!finderPsi || !finderBore){
+    empty.style.display=''; content.style.display='none'; return;
+  }
+  var key = finderPsi+'|'+finderBore;
+  var ringNo = FLANGE_TO_RING[key];
+  if(!ringNo){
+    empty.textContent='Not a standard combination for this pressure class.';
+    empty.style.display=''; content.style.display='none'; return;
+  }
+  var ring=null;
+  ['R','BX'].forEach(function(t){RINGS[t].forEach(function(r){if(r.no===ringNo)ring=r})});
+  if(!ring){empty.style.display='';content.style.display='none';return;}
+  empty.style.display='none'; content.style.display='';
+  var bx=isBX(ringNo);
+  var psiLabel = finderPsi==='3000'?'3,000':finderPsi==='5000'?'5,000':finderPsi==='10000'?'10,000':'15,000';
+  document.getElementById('fResultLabel').textContent = finderBore+'″ bore · '+psiLabel+' psi';
+  document.getElementById('fRing').textContent = ringNo;
+  document.getElementById('fDims').innerHTML =
+    '<div class="result-dim"><div class="result-dim-val">'+fmt(ring.pitch)+'</div><div class="result-dim-lbl">Pitch Dia. (in)</div></div>'
+   +'<div class="result-dim"><div class="result-dim-val">'+fmt(ring.width)+'</div><div class="result-dim-lbl">Width (in)</div></div>'
+   +'<div class="result-dim"><div class="result-dim-val">'+fmt(ring.depth)+'</div><div class="result-dim-lbl">Depth (in)</div></div>';
+  document.getElementById('fNote').textContent = RING_NOTES[bx?'BX':'R'];
+}
+
+/* ── Theme ── */
+var root=document.documentElement;
+var btn=document.getElementById('themeBtn');
+var icon=document.getElementById('themeIcon');
+function isDark(){var t=root.dataset.theme;return t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)}
+function syncIcon(){icon.textContent=isDark()?'☀':'☾'}
+function apply(t){if(t){root.dataset.theme=t}else{delete root.dataset.theme}syncIcon()}
+function stored(){try{return localStorage.getItem('pd-theme')||''}catch(e){return''}}
+function store(t){try{localStorage.setItem('pd-theme',t)}catch(e){}}
+apply(stored());
+btn.addEventListener('click',function(){var n=isDark()?'light':'dark';store(n);apply(n)});
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){if(!stored())apply('')});
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ── Init ── */
+renderTable();
+
+})();
+</script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var sw=reg.installing;
+      sw.addEventListener('statechange',function(){
+        if(sw.state==='installed'&&navigator.serviceWorker.controller){
+          var b=document.getElementById('sw-update-banner');if(b)b.style.display='flex';
+        }
+      });
+    });
+  }).catch(function(){});
+  navigator.serviceWorker.addEventListener('controllerchange',function(){window.location.reload()});
+}
+</script>
+<div id="sw-update-banner" aria-live="polite" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0B1D2D;color:#EDF2F8;border:1px solid rgba(242,140,24,.45);border-radius:10px;padding:11px 16px;font-size:12.5px;font-family:'IBM Plex Sans',Arial,sans-serif;gap:12px;align-items:center;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap">
+  <span>Update available</span>
+  <button onclick="window.location.reload()" style="background:#F28C18;color:#fff;border:none;border-radius:6px;padding:5px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Refresh</button>
+</div>
+</body>
+</html>
