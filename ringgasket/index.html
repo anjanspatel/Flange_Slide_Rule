@@ -75,8 +75,8 @@ body{background:var(--bg);color:var(--text);transition:background .22s,color .22
 .back-link:hover{border-color:var(--orange);color:var(--orange);text-decoration:none}
 .theme-btn{background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;font-size:15px;padding:6px 10px;line-height:1;transition:border-color .15s,color .15s}
 .theme-btn:hover{border-color:var(--orange);color:var(--orange)}
-.print-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;font-size:12px;font-weight:500;padding:6px 12px;font-family:inherit;letter-spacing:.01em;transition:border-color .15s,color .15s}
-.print-btn:hover{border-color:var(--orange);color:var(--orange)}
+.print-btn{display:inline-flex;align-items:center;gap:6px;background:#F28C18;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;padding:7px 14px;font-family:inherit;letter-spacing:.01em;transition:opacity .15s}
+.print-btn:hover{opacity:.88}
 
 /* Page */
 .content{max-width:1200px;margin:0 auto;padding:36px 28px 80px}
@@ -219,9 +219,9 @@ footer a:hover{color:var(--text)}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         <span>All Tools</span>
       </a>
-      <button class="print-btn" onclick="window.print()" title="Print ring data" aria-label="Print ring gasket data">
+      <button class="print-btn" onclick="window.print()" title="Export ring data as PDF" aria-label="Export ring gasket data as PDF">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-        Print
+        Export PDF
       </button>
       <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme"><span id="themeIcon" aria-hidden="true"></span></button>
     </div>
