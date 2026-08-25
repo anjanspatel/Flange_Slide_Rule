@@ -68,6 +68,19 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>body,button,select,input{font-family:'IBM Plex Sans',Arial,Helvetica,sans-serif!important}</style>
 <style>
+/* Share button — icon-only, hidden on mobile (URL still syncs silently) */
+#shareBtn{position:relative}
+#shareBtn .share-toast{
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:var(--navy);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.04em;
+  white-space:nowrap;padding:4px 9px;border-radius:6px;
+  opacity:0;pointer-events:none;transition:opacity .15s;
+}
+#shareBtn.copied .share-toast{opacity:1}
+@media(max-width:700px){#shareBtn{display:none}}
+</style>
+<style>
 @media print{
   .pdf-watermark{display:block!important}
   body::after{
@@ -93,6 +106,7 @@ select{min-width:0;text-overflow:clip;padding-right:24px}#rating{font-variant-nu
       <button class="action-btn" id="resetTool" type="button" title="Reset flange selections">↺ <span class="long">Reset</span></button>
       <button class="action-btn primary" id="savePdf" type="button" title="Download the current flange selection as a one-page landscape PDF (PDF engine requires internet on first use)">⇩ <span class="long">Download PDF</span></button>
       <button class="action-btn" id="unitToggle" type="button" title="Toggle inch / metric (mm) display">in</button>
+      <button class="action-btn" id="shareBtn" type="button" title="Copy shareable link to this flange selection"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme"><span id="themeIcon" aria-hidden="true"></span></button>
     </div>
   </div>
@@ -504,6 +518,83 @@ render();
   });
   // Keep mobile selects in sync when canvas selects update
   sizeSel.addEventListener('change',syncMobRatings);
+})();
+
+/* ── Shareable URL ── */
+(function(){
+  /* Build URL from current tool state */
+  function buildParams(){
+    var p = new URLSearchParams();
+    p.set('size', sizeSel.value);
+    p.set('rating', ratingSel.value);
+    if(metricMode) p.set('units','mm');
+    return p;
+  }
+
+  /* Silently update address bar — no history entry, no reload */
+  function syncURL(){
+    try{
+      history.replaceState(null,'', location.pathname + '?' + buildParams().toString());
+    }catch(e){}
+  }
+
+  /* Apply URL params on first load */
+  (function(){
+    try{
+      var p = new URLSearchParams(location.search);
+      var ps = p.get('size');
+      var pr = p.get('rating');
+      var pu = p.get('units');
+      var changed = false;
+      if(ps && Array.from(sizeSel.options).some(function(o){return o.value===ps})){
+        sizeSel.value = ps; refreshRatings(); changed = true;
+      }
+      if(pr && Array.from(ratingSel.options).some(function(o){return o.value===pr})){
+        ratingSel.value = pr; changed = true;
+      }
+      if(pu==='mm' && !metricMode){
+        metricMode = true;
+        if(unitBtn){ unitBtn.textContent='mm'; unitBtn.classList.add('metric-active'); }
+        changed = true;
+      }
+      if(changed) render();
+    }catch(e){}
+  })();
+
+  /* Keep URL in sync with every selection change */
+  sizeSel.addEventListener('change', syncURL);
+  ratingSel.addEventListener('change', syncURL);
+  if(unitBtn) unitBtn.addEventListener('click', syncURL);
+
+  /* Share button — copy link to clipboard */
+  var shareBtn = document.getElementById('shareBtn');
+  if(shareBtn){
+    var toast = document.createElement('span');
+    toast.className = 'share-toast';
+    toast.textContent = 'Link copied!';
+    shareBtn.appendChild(toast);
+
+    shareBtn.addEventListener('click', function(){
+      syncURL();
+      var url = location.href;
+      function showCopied(){
+        shareBtn.classList.add('copied');
+        setTimeout(function(){ shareBtn.classList.remove('copied'); }, 2000);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(showCopied).catch(fallback);
+      } else { fallback(); }
+      function fallback(){
+        try{
+          var ta = document.createElement('textarea');
+          ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
+          document.body.appendChild(ta); ta.focus(); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta);
+          showCopied();
+        }catch(e){}
+      }
+    });
+  }
 })();
 </script>
 </body>
