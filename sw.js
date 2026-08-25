@@ -1,4 +1,4 @@
-const CACHE = 'ap-tools-v3';
+const CACHE = 'ap-tools-v4';
 
 const PRECACHE = [
   '/',
