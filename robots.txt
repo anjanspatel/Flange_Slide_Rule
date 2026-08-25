@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /flange/
-Disallow: /terms/
 
-Sitemap: https://tools.anjanpatel.dev/sitemap.xml
+Sitemap: https://tools.anjanpatel.ca/sitemap.xml
