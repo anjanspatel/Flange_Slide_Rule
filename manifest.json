@@ -1,0 +1,36 @@
+{
+  "name": "Anjan Patel Engineering Tools",
+  "short_name": "AP Tools",
+  "description": "Precision engineering reference tools — API 6A flanges, tubing specs, ring gaskets.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B1D2D",
+  "theme_color": "#0B1D2D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Flange Slide Rule",
+      "short_name": "Flanges",
+      "description": "API 6A flange dimensional reference",
+      "url": "/flange/",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Tubing Data",
+      "short_name": "Tubing",
+      "description": "API 5CT tubing specs",
+      "url": "/tubing/",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "en-CA"
+}
