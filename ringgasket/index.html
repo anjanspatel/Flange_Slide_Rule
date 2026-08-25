@@ -75,6 +75,8 @@ body{background:var(--bg);color:var(--text);transition:background .22s,color .22
 .back-link:hover{border-color:var(--orange);color:var(--orange);text-decoration:none}
 .theme-btn{background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;font-size:15px;padding:6px 10px;line-height:1;transition:border-color .15s,color .15s}
 .theme-btn:hover{border-color:var(--orange);color:var(--orange)}
+.print-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;font-size:12px;font-weight:500;padding:6px 12px;font-family:inherit;letter-spacing:.01em;transition:border-color .15s,color .15s}
+.print-btn:hover{border-color:var(--orange);color:var(--orange)}
 
 /* Page */
 .content{max-width:1200px;margin:0 auto;padding:36px 28px 80px}
@@ -172,6 +174,32 @@ footer a:hover{color:var(--text)}
   .back-link span{display:none}
   .detail-dims{grid-template-columns:1fr 1fr}
 }
+
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;color:#000}
+  .site-header,.mode-tabs,.type-tabs,.warn-box,.print-btn,.theme-btn,footer{display:none!important}
+  .content{padding:12pt 0;max-width:100%}
+  h1{font-size:16pt;margin-bottom:4pt}
+  .page-eyebrow,.page-sub{display:none}
+  .tool-layout{display:grid;grid-template-columns:1fr 280pt;gap:16pt}
+  .ring-table-wrap{border:1pt solid #ccc;border-radius:0}
+  th{background:#f0f0f0!important;color:#000!important;font-size:8pt}
+  td{font-size:9pt}
+  tbody tr.selected td{background:#fff8e6!important;border-top:1pt solid #f28c18;border-bottom:1pt solid #f28c18}
+  td.ring-no{color:#c06000!important}
+  .detail-panel{border:1pt solid #ccc;border-radius:0;position:static}
+  .detail-ring-no{font-size:22pt;color:#c06000!important}
+  .detail-type{font-size:8pt}
+  .dim-card{background:#fafafa!important;border:1pt solid #ddd}
+  .dim-value{font-size:16pt}
+  .dim-label{font-size:7pt}
+  .flange-pill{border:1pt solid #ddd}
+  .flange-pill .psi{background:#fff8e6!important;color:#c06000!important;border-color:#f0c080!important}
+  .detail-empty{display:none!important}
+  #panel-finder{display:none!important}
+  #panel-ring{display:block!important}
+}
 </style>
 </head>
 <body>
@@ -191,6 +219,10 @@ footer a:hover{color:var(--text)}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         <span>All Tools</span>
       </a>
+      <button class="print-btn" onclick="window.print()" title="Print ring data" aria-label="Print ring gasket data">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print
+      </button>
       <button class="theme-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle colour theme"><span id="themeIcon" aria-hidden="true"></span></button>
     </div>
   </div>
