@@ -21,8 +21,9 @@
 
 <meta name="theme-color" content="#0B1D2D">
 <link rel="canonical" href="https://tools.anjanpatel.ca/">
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-<link rel="apple-touch-icon" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/icon-192.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -580,5 +581,6 @@ footer{border-top:1px solid var(--line);padding:24px 28px 32px;transition:border
   });
 })();
 </script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script>
 </body>
 </html>

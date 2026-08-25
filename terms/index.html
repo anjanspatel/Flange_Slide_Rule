@@ -51,8 +51,9 @@ footer a:hover{color:var(--text)}
 .theme-btn{background:none;border:1px solid var(--line);border-radius:6px;color:var(--muted);cursor:pointer;font-size:15px;padding:5px 9px;line-height:1;transition:border-color .15s,color .15s}
 .theme-btn:hover{border-color:var(--orange);color:var(--orange)}
 </style>
+<link rel="manifest" href="/manifest.json">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-<link rel="apple-touch-icon" href="/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -165,5 +166,6 @@ footer a:hover{color:var(--text)}
   document.getElementById('effdate').textContent=now.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
 })();
 </script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script>
 </body>
 </html>
