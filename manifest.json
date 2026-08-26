@@ -1,7 +1,7 @@
 {
   "name": "Anjan Patel Engineering Tools",
   "short_name": "AP Tools",
-  "description": "Precision engineering reference tools — API 6A flanges, tubing specs, ring gaskets.",
+  "description": "Precision engineering reference tools — API 6A flanges and tubing specs.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -42,10 +42,10 @@
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Ring Gasket Lookup",
-      "short_name": "Rings",
-      "description": "R-type and BX-type ring gasket cross-reference",
-      "url": "/ringgasket/",
+      "name": "Tubing Block SWL",
+      "short_name": "Tubing",
+      "description": "Safe working load calculator",
+      "url": "/tubing/",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
