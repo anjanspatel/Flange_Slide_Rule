@@ -47,13 +47,6 @@
       "description": "Safe working load calculator",
       "url": "/tubing/",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
-    },
-    {
-      "name": "Dimension Tables",
-      "short_name": "Tables",
-      "description": "API 6A flange dimension tables — printable",
-      "url": "/reference/",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "categories": ["productivity", "utilities"],
