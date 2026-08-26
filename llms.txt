@@ -1,0 +1,44 @@
+# AP Engineering Tools
+
+> Precision engineering reference tools for oil and gas — API 6A flange dimensions, ring gasket lookup, and tubing block safe working load calculations. Built for field and office use at tools.anjanpatel.ca.
+
+## Tools
+
+- [Flange Slide Rule](https://tools.anjanpatel.ca/flange/): Interactive API 6A / ISO 10423 flange dimensional lookup — bore, OD, raised-face diameter, bolt circle, stud count, stud diameter, stud length, and ring gasket series for pressure classes 2,000 through 15,000 psi. Supports inch and metric (mm) display. Exportable as PDF.
+- [Ring Gasket Lookup](https://tools.anjanpatel.ca/ringgasket/): R-type and BX-type ring gasket cross-reference. Two modes: look up a ring number to see pitch diameter, groove width, groove depth, and flange applications; or enter a pressure class and bore size to get the correct ring number and dimensions.
+- [Tubing Block SWL](https://tools.anjanpatel.ca/tubing/): Safe working load calculator for tubing blocks — enter block capacity, number of lines, and safety factor to get SWL in tons. Shows each calculation step.
+- [API 6A Dimension Tables](https://tools.anjanpatel.ca/reference/): Printable API 6A / ISO 10423 flange dimensional reference — 3,000 through 15,000 psi, 10 nominal bore sizes, ring gasket designations. Full table view with Export PDF.
+
+## About
+
+- [Home](https://tools.anjanpatel.ca/): Hub listing all tools
+- [Terms](https://tools.anjanpatel.ca/terms/): Terms of use
+
+## FAQ
+
+### What pressure classes does this cover?
+The Flange Slide Rule and Dimension Tables cover API 6A pressure classes 2,000, 3,000, 5,000, 10,000, and 15,000 psi (also written 2K, 3K, 5K, 10K, 15K).
+
+### What ring gasket types are covered?
+The Ring Gasket Lookup covers R-type and BX-type API 6A ring gaskets. R-type rings run R-24 through R-66. BX-type rings run BX-150 through BX-157.
+
+### What is the difference between R-type and BX-type ring gaskets?
+R-type and RX rings use the same groove and are interchangeable — RX is pressure-energized and preferred for higher pressures within 3,000 and 5,000 psi service. BX rings require a different groove profile and are used for 10,000 and 15,000 psi service.
+
+### How do I find the correct ring gasket for a flange?
+Use the Flange Finder tab in the Ring Gasket Lookup tool. Select the pressure class and bore size; the tool returns the correct ring number with pitch diameter, groove width, and groove depth.
+
+### What is SWL?
+SWL stands for Safe Working Load — the maximum load a lifting device is rated to carry under defined conditions. The Tubing Block SWL calculator divides the block's rated capacity by the number of lines and the safety factor to give SWL in tons, showing each step of the calculation.
+
+### What standards do these tools reference?
+The flange and ring gasket tools reference API 6A / ISO 10423, the specification for wellhead and christmas tree equipment used in oil and gas production.
+
+### Can I export or print the reference tables?
+Yes. Every tool page has an Export PDF button. The API 6A Dimension Tables and Ring Gasket Lookup use browser print-to-PDF. The Flange Slide Rule generates a formatted single-page landscape PDF.
+
+### Is there a mobile or offline version?
+The site is a Progressive Web App (PWA). Add it to your home screen from Safari or Chrome and it works offline using cached data. All tools function without an internet connection after the first load.
+
+### What bore sizes are included?
+The Flange Slide Rule and Dimension Tables include nominal bore sizes: 2-1/16, 2-9/16, 3-1/8, 4-1/16, 5-1/8, 7-1/16, 9, 11, 13-5/8, and 16-3/4 inches.

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://tools.anjanpatel.ca/sitemap.xml
+LLMs: https://tools.anjanpatel.ca/llms.txt
